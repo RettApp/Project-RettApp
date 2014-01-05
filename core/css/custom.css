@@ -1,0 +1,7 @@
+.nowrap {white-space: nowrap;}
+.rettapp-banner {
+	width: 80%;
+	text-align: center;
+	margin: 0 auto;
+}
+.rettapp-banner img {width: 100%;}
