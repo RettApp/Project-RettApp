@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- !Copyright -->
+<!--
+	Project: RettApp
+	Description: RettApp is an Open-Source-Project for persons working at a emergency medical service in Germany
+	Author: Jonathan Starck 
+	Licence: GNU GENERAL PUBLIC LICENSE Version 2, June 1991 & European Union Public Licence
+	Source: https://github.com/RettApp/
+-->
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+	xmlns:gap   = "http://phonegap.com/ns/1.0"
+	id          = "org.rettapp"
+	versionCode = "100" 
+	version     = "1.0.0" >
+
+	<name>
+		RettApp
+	</name>
+	<description>
+		RettApp Version für ganz Deutschland
+	</description>
+	<author href="http://www.rettapp.org/" email="support@rp.rettapp.org">
+		Jonathan Starck
+	</author>
+	
+	<preference name="phonegap-version" value="3.1.0" />
+	<preference name="permissions" value="none"/>
+	
+	<access origin="*" subdomains="true" />
+	<access origin="*.maps.google.com" subdomains="true" />
+	<access origin="*.googleapis.com" subdomains="true" />
+	<access origin="*.google.com" subdomains="true" />
+	<access origin="*.gstatic.com" subdomains="true" />
+	<feature name="http://api.phonegap.com/1.0/device"/>
+	<feature name="http://api.phonegap.com/1.0/geolocation"/>
+	<feature name="http://api.phonegap.com/1.0/network"/>
+	<feature name="http://api.phonegap.com/1.0/file"/>
+	<plugins>
+		<plugin name="Storage" value="org.apache.cordova.Storage"/>
+	</plugins>
+</widget>

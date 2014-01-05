@@ -14,39 +14,10 @@
 	include('system/inc/inc.head.php');
 	// Open html > body
 	print('<body>');
-	foreach (glob("system/extra/inc.head.*.php") as $filename){
-		include $filename;
-	}
-	foreach (glob("system/content/index/inc.*.php") as $filename){
-		include $filename;
-	}
-	foreach (glob("system/content/fms/inc.*.php") as $filename){
-		include $filename;
-	}
-	foreach (glob("system/content/law/inc.*.php") as $filename){
-		include $filename;
-	}
-	foreach (glob("system/content/position/inc.*.php") as $filename){
-		include $filename;
-	}
-	foreach (glob("system/content/rescuecoordinationcenter/inc.*.php") as $filename){
-		include $filename;
-	}
-	foreach (glob("system/content/rescuecoordinationcenter/rp/inc.*.php") as $filename){
-		include $filename;
-	}
-	foreach (glob("system/content/settings/inc.*.php") as $filename){
-		include $filename;
-	}
-	foreach (glob("system/content/spellingalphabet/inc.*.php") as $filename){
-		include $filename;
-	}
-	foreach (glob("system/content/usage/inc.*.php") as $filename){
-		include $filename;
-	}
-	foreach (glob("system/extra/inc.foot.*.php") as $filename){
-		include $filename;
-	}
+	
+	// Add some Code here to generate the file
+	
+	// Close html > body
 	print('</body>');
 ?>
 </html>
