@@ -9,9 +9,10 @@
 	Source: https://github.com/RettApp/
 -->
 <?php
-	// This Part generate the index.html
+	// This Part generate the index.html to use http://build.phonegap.com
 	// Include html > head
-	include('system/inc/inc.head.php');
+	include('inc/core/inc.variablen.php');
+	include('inc/core/inc.head.php');
 	// Open html > body
 	print('<body>');
 	
