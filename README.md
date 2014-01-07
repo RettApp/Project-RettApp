@@ -1,4 +1,4 @@
 RettApp
 =======
 
-RettApp the generel Version
+RettApp in der Version für ganz Deutschland.
