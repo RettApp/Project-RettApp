@@ -18,6 +18,11 @@
 	
 	// Add some Code here to generate the file
 	
+	// Search for main content files an include
+	foreach (glob("inc/content/main/inc.main.*.php") as $filename){
+		include $filename;
+	}
+	
 	// Close html > body
 	print('</body>');
 ?>
