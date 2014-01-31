@@ -18,7 +18,7 @@
 		<p>Für den Gebrauch dieser App wird jegliche Haftung abgelehnt. Die Information der RettApp sind ohne jegliche Gewähr. Für alle direkten oder indirekten Schäden, welche durch den Gebrauch dieser App oder der darin enthaltenen Information entstehen wird jegliche Haftung abgelehnt.</p>
 		<p>Es gelten die allgemeine Gesetze sowie die Richtlinien des regional zuständigen Ärztlichen Leiter Rettungsdienst.</p>
 		<p>
-			<a href="#drugs-02-index" id="setVisibleMedSetting" class="ui-btn ui-icon-check ui-btn-icon-left ui-corner-all">Gelesen und Einverstanden</a>
+			<a href="#drugs-02-index" id="setVisibleMedSetting" class="ui-btn ui-icon-carat-r ui-btn-icon-right ui-corner-all">Gelesen und Einverstanden</a>
 		</p>
 	</div>
 </div>

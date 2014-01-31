@@ -17,4 +17,5 @@
 	<script type="text/javascript" src="core/js/jquery/core/1.10.2.min.js"></script>
 	<script type="text/javascript" src="core/js/jquery/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
 	<script type="text/javascript" src="core/js/userdef.js"></script>
+	<script type="text/javascript" src="core/js/leitstellen.js"></script>
 </head>

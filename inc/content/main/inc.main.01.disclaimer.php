@@ -1,7 +1,4 @@
 <div data-role="page" id="main-01-disclaimer">
-	<div data-role="header">
-		<span class="ui-title"></span>
-	</div>
 	<div data-role="content" role="main" class="ui-content">
 		<div class="rettapp-banner">
 			<img src="core/img/rettapp_973x235_banner.png" alt="RettApp Logo" />
