@@ -7,9 +7,16 @@
 	Source: https://github.com/RettApp/
 */
 .nowrap {white-space: nowrap;}
+.align-center {
+	text-align: center;
+	margin: 0 auto;
+}
 .rettapp-banner {
 	width: 80%;
 	text-align: center;
 	margin: 0 auto;
 }
-.rettapp-banner img {width: 100%;}
+.rettapp-banner img {
+	width: 100%;
+	max-width: 973px;
+}

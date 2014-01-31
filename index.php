@@ -11,8 +11,8 @@
 <?php
 	// This Part generate the index.html to use http://build.phonegap.com
 	// Include html > head
-	include('inc/core/inc.variablen.php');
-	include('inc/core/inc.head.php');
+	include('inc/core/inc.core.variablen.php');
+	include('inc/core/inc.core.head.php');
 	// Open html > body
 	print('<body>');
 	
@@ -20,6 +20,18 @@
 	
 	// Search for main content files an include
 	foreach (glob("inc/content/main/inc.main.*.php") as $filename){
+		include $filename;
+	}
+	
+	foreach (glob("inc/content/drugs/inc.drugs.*.php") as $filename){
+		include $filename;
+	}
+	
+	foreach (glob("inc/content/spellingalphabet/inc.spellingalphabet.*.php") as $filename){
+		include $filename;
+	}
+	
+	foreach (glob("inc/content/function/inc.function.*.php") as $filename){
 		include $filename;
 	}
 	
