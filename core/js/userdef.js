@@ -15,6 +15,7 @@ if (localStorage.getItem("settings") === null) {
 	var settings = {};
 	settings.startdisclaimer = '0';
 	settings.meddisclaimer = '0';
+	settings.poison = '0';
 	localStorage.setItem("settings", JSON.stringify(settings));
 };
 if (localStorage.getItem("visiblemeddisclaimer") === null) {
@@ -103,6 +104,9 @@ $(document).on("pagebeforeshow", function(event) {
 	activePage = $.mobile.activePage.attr("id");
 	$('a.ui-btn-active').removeClass("ui-btn-active");
 	$('[href="#'+activePage+'"]').addClass("ui-btn-active");
+});
+$(document).on("pagebeforshow", function(event) {
+	$('.getPoisonNumber > a');
 });
 /* !Settings speichern */
 /*

@@ -23,6 +23,20 @@
 					<option value="0">On</option>
 				</select>
 			</div>
+			<div class="ui-field-contain">
+				<label for="select-native-fc">Giftnotruf</label>
+				<select name="select-native-fc" id="settings-poison">
+					<option value="+49-30-19240">Berlin</option>
+					<option value="+49-228-19240">Bonn</option>
+					<option value="+49-361-730730">Erfurt</option>
+					<option value="+49-761-19240">Freiburg</option>
+					<option value="+49-551-383180">Göttingen (Fachleute)</option>
+					<option value="+49-6841-19240">Homburg/Saar</option>
+					<option value="+49-6131-19240">Mainz</option>
+					<option value="+49-89-19240">München</option>
+					<option value="+49-911-3982451">Nürnberg</option>
+				</select>
+			</div>
 			<input type="button" value="Speichern" id="saveSettings" data-icon="check">
 		</form>
 	</div>
