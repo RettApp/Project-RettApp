@@ -19,9 +19,6 @@
 				<li><a href="#drugs-03-dope" data-icon="bullets">Wirkstoff</a></li>
 				<li><a href="#drugs-04-illness" data-icon="bullets">Krankheit</a></li>
 			</ul>
-			<ul>
-				<li><a href="#drugs-05-calculator" data-icon="gear">Rechner</a></li>
-			</ul>
 		</div>
 	</div>
 </div>

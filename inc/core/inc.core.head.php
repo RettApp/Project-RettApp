@@ -4,6 +4,7 @@
 			switch($_GET['head']){
 				case 'phonegap':
 					echo('<script src="phonegap.js"></script>');
+					echo('<script src="InAppBrowser.js"></script>');
 					break;
 			}
 		}

@@ -26,16 +26,16 @@
 	<preference name="phonegap-version" value="3.1.0" />
 	<preference name="permissions" value="none"/>
 	
-	<access origin="*" subdomains="true" />
-	<access origin="*.maps.google.com" subdomains="true" />
-	<access origin="*.googleapis.com" subdomains="true" />
-	<access origin="*.google.com" subdomains="true" />
-	<access origin="*.gstatic.com" subdomains="true" />
+	<icon src="icon.png" />
+	
+	<access origin="*" browserOnly="true"/>
+	
 	<feature name="http://api.phonegap.com/1.0/device"/>
 	<feature name="http://api.phonegap.com/1.0/geolocation"/>
 	<feature name="http://api.phonegap.com/1.0/network"/>
 	<feature name="http://api.phonegap.com/1.0/file"/>
-	<plugins>
-		<plugin name="Storage" value="org.apache.cordova.Storage"/>
-	</plugins>
+	
+	<gap:plugin name="org.apache.cordova.inappbrowser" />
+	<plugin name="InAppBrowser" value="CDVInAppBrowser" />
+	<plugin name="InAppBrowser" />
 </widget>

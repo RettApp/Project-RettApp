@@ -26,11 +26,30 @@
 	foreach (glob("inc/content/drugs/inc.drugs.*.php") as $filename){
 		include $filename;
 	}
-	
+	foreach (glob("inc/content/hospitals/inc.hospitals.*.php") as $filename){
+		include $filename;
+	}
+	foreach (glob("inc/content/rescuecoordinationcenter/inc.rescuecoordinationcenter.*.php") as $filename){
+		include $filename;
+	}
+	foreach (glob("inc/content/rescuecoordinationcenter/rp/inc.rescuecoordinationcenter.rp.*.php") as $filename){
+		include $filename;
+	}
+	foreach (glob("inc/content/rescuecoordinationcenter/sl/inc.rescuecoordinationcenter.sl.*.php") as $filename){
+		include $filename;
+	}
+	foreach (glob("inc/content/location/inc.location.*.php") as $filename){
+		include $filename;
+	}
+	foreach (glob("inc/content/law/inc.law.*.php") as $filename){
+		include $filename;
+	}
 	foreach (glob("inc/content/spellingalphabet/inc.spellingalphabet.*.php") as $filename){
 		include $filename;
 	}
-	
+	foreach (glob("inc/content/other/inc.other.*.php") as $filename){
+		include $filename;
+	}
 	foreach (glob("inc/content/function/inc.function.*.php") as $filename){
 		include $filename;
 	}

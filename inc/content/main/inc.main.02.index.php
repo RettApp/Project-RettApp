@@ -14,16 +14,19 @@
 		<ul data-role="listview" data-inset="true">
 			<li data-role="list-divider">Hauptfunktionen</li>
 			<li><a href="#drugs-01-disclaimer"><img src="core/icons/medicine_sw_by_e-young.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Medikamente</a></li>
-			<li><img src="core/icons/1391013150_Hospital_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Krankenhäuser</li>
-			<li><img src="core/icons/1391013537_voice-support_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Leitstellen</li>
-			<li><img src="core/icons/1391013724_map_16x16_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Standort</a>
+			<li><a href="#hospitals-01-index"><img src="core/icons/1391013150_Hospital_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Krankenhäuser</a></li>
+			<li><a href="#rescuecoordinationcenter-01-index"><img src="core/icons/1391013537_voice-support_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Leitstellen</a></li>
+			<li><a href="#location-01-index"><img src="core/icons/1391013724_map_16x16_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Standort</a></li>
 		</ul>
 		<ul data-role="listview" data-inset="true">
 			<li data-role="list-divider">Schnellwahl</li>
-			<li data-icon="phone" class="getRescueCoordinationCenterNumber"><a href="#">Leitstelle</a></li>
-			<li data-icon="phone" class="getPoisonNumber"><a href="#">Giftnotruf</a></li>
+			<li data-icon="phone"><a class="getRescueCoordinationCenterNumber">Leitstelle</a></li>
+			<li data-icon="phone"><a class="getPoisonNumber">Giftnotruf</a></li>
 		</ul>
-		<p><a href="#" class="ui-btn ui-corner-all ui-btn-icon-right ui-icon-info ui-shadow" data-rel='dialog'>Kontakt</a></p>
+		<p>
+			<a href="#law-01-imprint" class="ui-btn ui-corner-all ui-btn-icon-right ui-icon-info ui-shadow" data-rel='dialog'>Kontakt</a>
+			<a href="#other-01-donate" class="ui-btn ui-corner-all ui-btn-icon-right ui-icon-heart ui-shadow">Buy Me a Beer</a>
+		</p>
 		<p class="align-center">"GNU General Public License (GPL) v. 2" &amp; "European Union Public Licence (EUPL)"</p>
 	</div>
 </div>

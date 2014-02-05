@@ -12,8 +12,8 @@
 	</div>
 	<div data-role="content" role="main" class="ui-content">
 		<ul data-role="listview" data-filter="true" data-filter-placeholder="Medikamenten Suche..." data-inset="false">
-			<li data-filtertext="Adrenalin, Suprarenin, Epinephrin"><a href="#">Adrenalin</a></li>
-			<li data-filtertext="Glukose 40%, Glucose, Stärkezucker, Dextrose, Saccharum amylaceum, Saccharum uvarum"><a href="#">Glukose 40%</a></li>
+			<li data-filtertext="Adrenalin, Suprarenin, Epinephrin">Adrenalin</li>
+			<li data-filtertext="Glukose 40%, Glucose, Stärkezucker, Dextrose, Saccharum amylaceum, Saccharum uvarum">Glukose 40%</li>
 		</ul>
 	</div>
 	<div data-role="footer" data-position="fixed">
@@ -22,9 +22,6 @@
 				<li><a href="#drugs-02-index" data-icon="bullets">Medikament</a></li>
 				<li><a href="#drugs-03-dope" data-icon="bullets">Wirkstoff</a></li>
 				<li><a href="#drugs-04-illness" data-icon="bullets">Krankheit</a></li>
-			</ul>
-			<ul>
-				<li><a href="#drugs-05-calculator" data-icon="gear">Rechner</a></li>
 			</ul>
 		</div>
 	</div>

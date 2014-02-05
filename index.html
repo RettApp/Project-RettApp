@@ -9,7 +9,7 @@
 	Source: https://github.com/RettApp/
 -->
 <head>
-	<script src="phonegap.js"></script>	<title>RettApp</title>
+	<script src="phonegap.js"></script><script src="InAppBrowser.js"></script>	<title>RettApp</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="core/js/jquery/mobile/1.4.0/jquery.mobile-1.4.0.min.css">
@@ -18,10 +18,8 @@
 	<script type="text/javascript" src="core/js/jquery/core/1.10.2.min.js"></script>
 	<script type="text/javascript" src="core/js/jquery/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
 	<script type="text/javascript" src="core/js/userdef.js"></script>
+	<script type="text/javascript" src="core/js/leitstellen.js"></script>
 </head><body><div data-role="page" id="main-01-disclaimer">
-	<div data-role="header">
-		<span class="ui-title"></span>
-	</div>
 	<div data-role="content" role="main" class="ui-content">
 		<div class="rettapp-banner">
 			<img src="core/img/rettapp_973x235_banner.png" alt="RettApp Logo" />
@@ -46,16 +44,19 @@
 		<ul data-role="listview" data-inset="true">
 			<li data-role="list-divider">Hauptfunktionen</li>
 			<li><a href="#drugs-01-disclaimer"><img src="core/icons/medicine_sw_by_e-young.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Medikamente</a></li>
-			<li><img src="core/icons/1391013150_Hospital_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Krankenhäuser</li>
-			<li><img src="core/icons/1391013537_voice-support_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Leitstellen</li>
-			<li><img src="core/icons/1391013724_map_16x16_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Standort</a>
+			<li><a href="#hospitals-01-index"><img src="core/icons/1391013150_Hospital_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Krankenhäuser</a></li>
+			<li><a href="#rescuecoordinationcenter-01-index"><img src="core/icons/1391013537_voice-support_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Leitstellen</a></li>
+			<li><a href="#location-01-index"><img src="core/icons/1391013724_map_16x16_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Standort</a></li>
 		</ul>
 		<ul data-role="listview" data-inset="true">
 			<li data-role="list-divider">Schnellwahl</li>
-			<li data-icon="phone" class="getRescueCoordinationCenterNumber"><a href="#">Leitstelle</a></li>
-			<li data-icon="phone" class="getPoisonNumber"><a href="#">Giftnotruf</a></li>
+			<li data-icon="phone"><a class="getRescueCoordinationCenterNumber">Leitstelle</a></li>
+			<li data-icon="phone"><a class="getPoisonNumber">Giftnotruf</a></li>
 		</ul>
-		<p><a href="#" class="ui-btn ui-corner-all ui-btn-icon-right ui-icon-info ui-shadow" data-rel='dialog'>Kontakt</a></p>
+		<p>
+			<a href="#law-01-imprint" class="ui-btn ui-corner-all ui-btn-icon-right ui-icon-info ui-shadow" data-rel='dialog'>Kontakt</a>
+			<a href="#other-01-donate" class="ui-btn ui-corner-all ui-btn-icon-right ui-icon-heart ui-shadow">Buy Me a Beer</a>
+		</p>
 		<p class="align-center">"GNU General Public License (GPL) v. 2" &amp; "European Union Public Licence (EUPL)"</p>
 	</div>
 </div><div data-role="page" id="drugs-01-disclaimer" data-quicklinks="true">
@@ -78,7 +79,7 @@
 		<p>Für den Gebrauch dieser App wird jegliche Haftung abgelehnt. Die Information der RettApp sind ohne jegliche Gewähr. Für alle direkten oder indirekten Schäden, welche durch den Gebrauch dieser App oder der darin enthaltenen Information entstehen wird jegliche Haftung abgelehnt.</p>
 		<p>Es gelten die allgemeine Gesetze sowie die Richtlinien des regional zuständigen Ärztlichen Leiter Rettungsdienst.</p>
 		<p>
-			<a href="#drugs-02-index" id="setVisibleMedSetting" class="ui-btn ui-icon-check ui-btn-icon-left ui-corner-all">Gelesen und Einverstanden</a>
+			<a href="#drugs-02-index" id="setVisibleMedSetting" class="ui-btn ui-icon-carat-r ui-btn-icon-right ui-corner-all">Gelesen und Einverstanden</a>
 		</p>
 	</div>
 </div><div data-role="page" id="drugs-02-index" data-quicklinks="true">
@@ -87,13 +88,693 @@
 			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
 			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-arrow-l ui-btn-icon-notext">Zurück</a>
 		</div>
-		<h1>Medikamente</h1>
+		<h1>Medikament</h1>
 		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
 			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="slidefade" data-direction="reverse">Einstellungen</a>
 			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext">Home</a>
 		</div>
 	</div>
 	<div data-role="content" role="main" class="ui-content">
+		<ul data-role="listview" data-filter="true" data-filter-placeholder="Medikamenten Suche..." data-inset="false">
+			<li data-filtertext="Adrenalin, Suprarenin, Epinephrin">Adrenalin</li>
+			<li data-filtertext="Glukose 40%, Glucose, Stärkezucker, Dextrose, Saccharum amylaceum, Saccharum uvarum">Glukose 40%</li>
+		</ul>
+	</div>
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#drugs-02-index" data-icon="bullets">Medikament</a></li>
+				<li><a href="#drugs-03-dope" data-icon="bullets">Wirkstoff</a></li>
+				<li><a href="#drugs-04-illness" data-icon="bullets">Krankheit</a></li>
+			</ul>
+		</div>
+	</div>
+</div><div data-role="page" id="drugs-03-dope" data-quicklinks="true">
+	<div data-role="header" data-position="fixed">
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-arrow-l ui-btn-icon-notext">Zurück</a>
+		</div>
+		<h1>Wirkstoff</h1>
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="slidefade" data-direction="reverse">Einstellungen</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext">Home</a>
+		</div>
+	</div>
+	<div data-role="content" role="main" class="ui-content">
+	</div>
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#drugs-02-index" data-icon="bullets">Medikament</a></li>
+				<li><a href="#drugs-03-dope" data-icon="bullets">Wirkstoff</a></li>
+				<li><a href="#drugs-04-illness" data-icon="bullets">Krankheit</a></li>
+			</ul>
+		</div>
+	</div>
+</div><div data-role="page" id="drugs-04-illness" data-quicklinks="true">
+	<div data-role="header" data-position="fixed">
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-arrow-l ui-btn-icon-notext">Zurück</a>
+		</div>
+		<h1>Krankheit</h1>
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="slidefade" data-direction="reverse">Einstellungen</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext">Home</a>
+		</div>
+	</div>
+	<div data-role="content" role="main" class="ui-content">
+	</div>
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#drugs-02-index" data-icon="bullets">Medikament</a></li>
+				<li><a href="#drugs-03-dope" data-icon="bullets">Wirkstoff</a></li>
+				<li><a href="#drugs-04-illness" data-icon="bullets">Krankheit</a></li>
+			</ul>
+		</div>
+	</div>
+</div><div data-role="page" id="hospitals-01-index" data-quicklinks="true">
+	<div data-role="header" data-position="fixed">
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-arrow-l ui-btn-icon-notext">Zurück</a>
+		</div>
+		<h1>Krankenhäuser</h1>
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="slidefade" data-direction="reverse">Einstellungen</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext">Home</a>
+		</div>
+	</div>
+	<div data-role="content" role="main" class="ui-content">
+	</div>
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#hospitals-01-index" data-icon="bullets">Regional</a></li>
+				<li><a href="#hospitals-02-division" data-icon="bullets">Abteilung</a></li>
+				<li><a href="#hospitals-03-maps" data-icon="location">Karte</a></li>
+			</ul>
+		</div>
+	</div>
+</div><div data-role="page" id="hospitals-02-division" data-quicklinks="true">
+	<div data-role="header" data-position="fixed">
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-arrow-l ui-btn-icon-notext">Zurück</a>
+		</div>
+		<h1>Krankenhäuser</h1>
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="slidefade" data-direction="reverse">Einstellungen</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext">Home</a>
+		</div>
+	</div>
+	<div data-role="content" role="main" class="ui-content">
+	</div>
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#hospitals-01-index" data-icon="bullets">Regional</a></li>
+				<li><a href="#hospitals-02-division" data-icon="bullets">Abteilung</a></li>
+				<li><a href="#hospitals-03-maps" data-icon="location">Karte</a></li>
+			</ul>
+		</div>
+	</div>
+</div><div data-role="page" id="hospitals-03-maps" data-quicklinks="true">
+	<div data-role="header" data-position="fixed">
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-arrow-l ui-btn-icon-notext">Zurück</a>
+		</div>
+		<h1>Krankenhäuser</h1>
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="slidefade" data-direction="reverse">Einstellungen</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext">Home</a>
+		</div>
+	</div>
+	<div data-role="content" role="main" class="ui-content">
+	</div>
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#hospitals-01-index" data-icon="bullets">Regional</a></li>
+				<li><a href="#hospitals-02-division" data-icon="bullets">Abteilung</a></li>
+				<li><a href="#hospitals-03-maps" data-icon="location">Karte</a></li>
+			</ul>
+		</div>
+	</div>
+</div><div data-role="page" id="rescuecoordinationcenter-01-index">
+	<div data-role="header" data-position="fixed">
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-arrow-l ui-btn-icon-notext">Zurück</a>
+		</div>
+		<h1>Leitstellen</h1>
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="slidefade" data-direction="reverse">Einstellungen</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext">Home</a>
+		</div>
+	</div>
+	<div data-role="content" role="main" class="ui-content">
+		<ul data-role="listview" data-filter="true" data-filter-placeholder="Suche..." data-inset="false">
+			<li>Baden-Württemberg (BW)</li>
+			<li>Bayern (BY)</li>
+			<li>Berlin (BE)</li>
+			<li>Brandenburg (BB)</li>
+			<li>Bremen (HB)</li>
+			<li>Hamburg (HH)</li>
+			<li>Hessen (HE)</li>
+			<li>Mecklenburg-Vorpommern (MV)</li>
+			<li>Niedersachsen (NI)</li>
+			<li>Nordrhein-Westfalen (NW)</li>
+			<li data-filtertext="Rheinland-Pfalz (RP), Bad Kreuznach, Birkenfeld an der Nahe, Rhein-Hunsrück-Kreis, Donnersbergskreis, Kaiserslautern, Kusel, Ahrweiler, Cochem-Zell, Koblenz, Mayen-Koblenz, Bad Dürkheim, Frankenthal, Ludwigshafen, Neustadt an der Weinstraße, Rhein-Pfalz-Kreis, Speyer, Alzey-Worms, Mainz, Mainz-Bingen, Worms, Altenkirchen im Westerwald, Neuwied, Rhein-Lahn-Kreis, Westerwaldkreis, Germersheim, Landau in der Pfalz, Pirmasens, Südliche Weinstraße, Südwestpfalz, Zweibrücken, Bernkastel-Wittlich, Bitburg-Prüm, Trier, Trier-Saarburg, Vulkaneifel, 404, 405, 408, 409, 410, 411, 416"><a href="#rescuecoordinationcenter-rp-01-index">Rheinland-Pfalz (RP)</a></li>
+			<li data-filtertext="Saarland (SL), Saarbrücken, Merzig-Wadern, Neunkirchen, Saarlouis, Saarpfalz-Kreis, St. Wendel, 490"><a href="#rescuecoordinationcenter-sl-01-index">Saarland (SL)</a></li>
+			<li>Sachsen (SN)</li>
+			<li>Sachsen-Anhalt (ST)</li>
+			<li>Schleswig-Holstein (SH)</li>
+			<li>Thüringen (TH)</li>
+		</ul>
+	</div>
+</div><div data-role="page" id="rescuecoordinationcenter-rp-01-index">
+	<div data-role="header" data-position="fixed">
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
+			<a href="#rescuecoordinationcenter-01-index" class="ui-btn ui-btn-icon-right ui-icon-arrow-l ui-btn-icon-notext">Zurück</a>
+		</div>
+		<h1>Rheinland-Pfalz</h1>
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="slidefade" data-direction="reverse">Einstellungen</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext">Home</a>
+		</div>
+	</div>
+	<div data-role="content" role="main" class="ui-content">
+		<ul data-role="listview" data-filter="true" data-filter-placeholder="Suche..." data-inset="false">
+			<li data-filtertext="Leitstelle Bad Kreuznach, 410, Bad Kreuznach, KH, Birkenfeld an der Nahe, BIR, Rhein-Hunsrück-Kreis, SIM"><a href="#rescuecoordinationcenter-rp-02-badkreuznach">Leitstelle Bad Kreuznach <span class="ui-li-count">410</span></a></li>
+			<li data-filtertext="Leitstelle Kaiserslautern, 416, Kaiserslautern, KL, Donnersbergkreis, KIB, Kusel, KUS"><a href="#rescuecoordinationcenter-rp-03-kaiserslautern">Leitstelle Kaiserslautern <span class="ui-li-count">416</span></a></li>
+			<li data-filtertext="Leitstelle Koblenz, 411, Mayen-Koblenz, MYK, Koblenz, KO, Ahrweiler, AW, Cochem-Zell, COC"><a href="#rescuecoordinationcenter-rp-04-koblenz">Leitstelle Koblenz <span class="ui-li-count">411</span></a></li>
+			<li data-filtertext="Leitstelle Ludwigshafen, 409, Ludwigshafen, LU, Rhein-Pfalz-Kreis, RP, Frankenthal, FT, Speyer, SP, Neustadt an der Weinstraße, NW, Bad Dürkheim, DÜW"><a href="#rescuecoordinationcenter-rp-05-ludwigshafen">Leitstelle Ludwigshafen <span class="ui-li-count">409</span></a></li>
+			<li data-filtertext="Leitstelle Mainz, 404, 411, Alzey-Worms, AZ, Mainz, MZ, Mainz-Bingen, Worms, WO"><a href="#rescuecoordinationcenter-rp-06-mainz">Leitstelle Mainz <span class="ui-li-count">404 / 411</span></a></li>
+			<li data-filtertext="Leitstelle Montabaur, 409, Altenkirchen, AK, Westerwaldkreis, WW, Rhein-Lahn-Kreis, EMS, Neuwied, NR"><a href="#rescuecoordinationcenter-rp-07-montabaur">Leitstelle Montabaur <span class="ui-li-count">409</span></a></li>
+			<li data-filtertext="Leitstelle Südpfalz, 405, Südliche Weinstraße, SÜW, Landau in der Pfalz, LD, Germersheim, GER, Südwestpfalz, PS, Pirmasens, Zweibrücken, ZW"><a href="#rescuecoordinationcenter-rp-08-suedpfalz">Leitstelle Südpfalz <span class="ui-li-count">405</span></a></li>
+			<li data-filtertext="Leitstelle Trier, 404, 408, Trier, TR, Trier-Saarburg, Bernkastel-Wittlich, WIL, Eifelkreis Bitburg-Prüm, BIT, Vulkaneifel, DAU"><a href="#rescuecoordinationcenter-rp-09-trier">Leitstelle Trier <span class="ui-li-count">404 / 408</span></a></li>
+		</ul>
+	</div>
+</div><div data-role="page" id="rescuecoordinationcenter-rp-02-badkreuznach">
+	<div data-role="header" data-position="fixed">
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
+			<a href="#rescuecoordinationcenter-rp-01-index" class="ui-btn ui-btn-icon-right ui-icon-arrow-l ui-btn-icon-notext">Zurück</a>
+		</div>
+		<h1>Leitstelle Bad Kreuznach</h1>
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="slidefade" data-direction="reverse">Einstellungen</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext">Home</a>
+		</div>
+	</div>
+	<div data-role="content" role="main" class="ui-content">
+		<p><strong>Rufname:</strong> "Leitstelle Kreuznach"</p>
+		<table data-role="table" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-text="Spalten">
+			<thead>
+				<tr>
+					<th>Stadt/Landkreis</th>
+					<th data-priority="1">Kürzel</th>
+					<th data-priority="persist">Funk</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Bad Kreuznach</td>
+					<td>KH</td>
+					<td>410 GU</td>
+				</tr>
+				<tr>
+					<td>Birkenfeld an der Nahe</td>
+					<td>BIR</td>
+					<td>410 GU</td>
+				</tr>
+				<tr>
+					<td>Rhein-Hunsrück-Kreis</td>
+					<td>SIM</td>
+					<td>410 GU</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="tel:+49-671-112" data-icon="phone">Anrufen</a></li>
+			</ul>
+		</div>
+	</div>
+</div><div data-role="page" id="rescuecoordinationcenter-rp-03-kaiserslautern">
+	<div data-role="header" data-position="fixed">
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
+			<a href="#rescuecoordinationcenter-rp-01-index" class="ui-btn ui-btn-icon-right ui-icon-arrow-l ui-btn-icon-notext">Zurück</a>
+		</div>
+		<h1>Leitstelle Kaiserslautern</h1>
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="slidefade" data-direction="reverse">Einstellungen</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext">Home</a>
+		</div>
+	</div>
+	<div data-role="content" role="main" class="ui-content">
+		<p><strong>Rufname:</strong> "Leitstelle Kaiser"</p>
+		<table data-role="table" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-text="Spalten">
+			<thead>
+				<tr>
+					<th>Stadt/Landkreis</th>
+					<th data-priority="1">Kürzel</th>
+					<th data-priority="persist">Funk</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Kaiserslautern</td>
+					<td>KL</td>
+					<td>416 GU</td>
+				</tr>
+				<tr>
+					<td>Donnersbergkreis</td>
+					<td>KIB</td>
+					<td>416 GU</td>
+				</tr>
+				<tr>
+					<td>Kusel</td>
+					<td>KUS</td>
+					<td>416 GU</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="tel:+49-631-112" data-icon="phone">Anrufen</a></li>
+			</ul>
+		</div>
+	</div>
+</div><div data-role="page" id="rescuecoordinationcenter-rp-04-koblenz">
+	<div data-role="header" data-position="fixed">
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
+			<a href="#rescuecoordinationcenter-rp-01-index" class="ui-btn ui-btn-icon-right ui-icon-arrow-l ui-btn-icon-notext">Zurück</a>
+		</div>
+		<h1>Leitstelle Koblenz</h1>
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="slidefade" data-direction="reverse">Einstellungen</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext">Home</a>
+		</div>
+	</div>
+	<div data-role="content" role="main" class="ui-content">
+		<p><strong>Rufname:</strong> "Leitstelle Koblenz"</p>
+		<table data-role="table" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-text="Spalten">
+			<thead>
+				<tr>
+					<th>Stadt/Landkreis</th>
+					<th data-priority="1">Kürzel</th>
+					<th data-priority="persist">Funk</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Koblenz</td>
+					<td>KO</td>
+					<td>411 GU</td>
+				</tr>
+				<tr>
+					<td>Mayen-Koblenz</td>
+					<td>MYK</td>
+					<td>411 GU</td>
+				</tr>
+				<tr>
+					<td>Ahrweiler</td>
+					<td>AW</td>
+					<td>411 GU</td>
+				</tr>
+				<tr>
+					<td>Cochem-Zell</td>
+					<td>COC</td>
+					<td>411 GU</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="tel:+49-261-112" data-icon="phone">Anrufen</a></li>
+			</ul>
+		</div>
+	</div>
+</div><div data-role="page" id="rescuecoordinationcenter-rp-05-ludwigshafen">
+	<div data-role="header" data-position="fixed">
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
+			<a href="#rescuecoordinationcenter-rp-01-index" class="ui-btn ui-btn-icon-right ui-icon-arrow-l ui-btn-icon-notext">Zurück</a>
+		</div>
+		<h1>Leitstelle Ludwigshafen</h1>
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="slidefade" data-direction="reverse">Einstellungen</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext">Home</a>
+		</div>
+	</div>
+	<div data-role="content" role="main" class="ui-content">
+		<p><strong>Rufname:</strong> "Leitstelle Lu"</p>
+		<table data-role="table" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-text="Spalten">
+			<thead>
+				<tr>
+					<th>Stadt/Landkreis</th>
+					<th data-priority="1">Kürzel</th>
+					<th data-priority="persist">Funk</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Ludwigshafen</td>
+					<td>LU</td>
+					<td>409 GU</td>
+				</tr>
+				<tr>
+					<td>Rhein-Pfalz-Kreis</td>
+					<td>RP</td>
+					<td>409 GU</td>
+				</tr>
+				<tr>
+					<td>Frankenthal</td>
+					<td>FT</td>
+					<td>409 GU</td>
+				</tr>
+				<tr>
+					<td>Speyer</td>
+					<td>SP</td>
+					<td>409 GU</td>
+				</tr>
+				<tr>
+					<td>Neustadt an der Weinstraße</td>
+					<td>NW</td>
+					<td>409 GU</td>
+				</tr>
+				<tr>
+					<td>Bad Dürkheim</td>
+					<td>DÜW</td>
+					<td>409 GU</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="tel:+49-621-19222" data-icon="phone">Anrufen</a></li>
+			</ul>
+		</div>
+	</div>
+</div><div data-role="page" id="rescuecoordinationcenter-rp-06-mainz">
+	<div data-role="header" data-position="fixed">
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
+			<a href="#rescuecoordinationcenter-rp-01-index" class="ui-btn ui-btn-icon-right ui-icon-arrow-l ui-btn-icon-notext">Zurück</a>
+		</div>
+		<h1>Leitstelle Mainz</h1>
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="slidefade" data-direction="reverse">Einstellungen</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext">Home</a>
+		</div>
+	</div>
+	<div data-role="content" role="main" class="ui-content">
+		<p><strong>Rufname:</strong> "Leitstelle Mainz"</p>
+		<table data-role="table" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-text="Spalten">
+			<thead>
+				<tr>
+					<th>Stadt/Landkreis</th>
+					<th data-priority="1">Kürzel</th>
+					<th data-priority="persist">Funk</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Mainz</td>
+					<td>MZ</td>
+					<td>404 GU</td>
+				</tr>
+				<tr>
+					<td>Mainz-Bingen</td>
+					<td>MZ</td>
+					<td>404 GU</td>
+				</tr>
+				<tr>
+					<td>Worms</td>
+					<td>WO</td>
+					<td>411 GU</td>
+				</tr>
+				<tr>
+					<td>Alzey-Worms</td>
+					<td>AZ</td>
+					<td>411 GU</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="tel:+49-6133-19222" data-icon="phone">Anrufen</a></li>
+			</ul>
+		</div>
+	</div>
+</div><div data-role="page" id="rescuecoordinationcenter-rp-07-montabaur">
+	<div data-role="header" data-position="fixed">
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
+			<a href="#rescuecoordinationcenter-rp-01-index" class="ui-btn ui-btn-icon-right ui-icon-arrow-l ui-btn-icon-notext">Zurück</a>
+		</div>
+		<h1>Leitstelle Montabaur</h1>
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="slidefade" data-direction="reverse">Einstellungen</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext">Home</a>
+		</div>
+	</div>
+	<div data-role="content" role="main" class="ui-content">
+		<p><strong>Rufname:</strong> "Leitstelle Montabaur"</p>
+		<table data-role="table" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-text="Spalten">
+			<thead>
+				<tr>
+					<th>Stadt/Landkreis</th>
+					<th data-priority="1">Kürzel</th>
+					<th data-priority="persist">Funk</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Altenkirchen</td>
+					<td>AK</td>
+					<td>409 GU</td>
+				</tr>
+				<tr>
+					<td>Westerwaldkreis</td>
+					<td>WW</td>
+					<td>409 GU</td>
+				</tr>
+				<tr>
+					<td>Rhein-Lahn-Kreis</td>
+					<td>EMS</td>
+					<td>409 GU</td>
+				</tr>
+				<tr>
+					<td>Neuwied</td>
+					<td>NR</td>
+					<td>409 GU</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="tel:+49-2602-112" data-icon="phone">Anrufen</a></li>
+			</ul>
+		</div>
+	</div>
+</div><div data-role="page" id="rescuecoordinationcenter-rp-08-suedpfalz">
+	<div data-role="header" data-position="fixed">
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
+			<a href="#rescuecoordinationcenter-rp-01-index" class="ui-btn ui-btn-icon-right ui-icon-arrow-l ui-btn-icon-notext">Zurück</a>
+		</div>
+		<h1>Leitstelle Südpfalz</h1>
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="slidefade" data-direction="reverse">Einstellungen</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext">Home</a>
+		</div>
+	</div>
+	<div data-role="content" role="main" class="ui-content">
+		<p><strong>Rufname:</strong> "Leitstelle Südpfalz"</p>
+		<table data-role="table" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-text="Spalten">
+			<thead>
+				<tr>
+					<th>Stadt/Landkreis</th>
+					<th data-priority="1">Kürzel</th>
+					<th data-priority="persist">Funk</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Südliche Weinstraße</td>
+					<td>SÜW</td>
+					<td>405 GU</td>
+				</tr>
+				<tr>
+					<td>Landau in der Pfalz</td>
+					<td>LD</td>
+					<td>405 GU</td>
+				</tr>
+				<tr>
+					<td>Germersheim</td>
+					<td>GER</td>
+					<td>405 GU</td>
+				</tr>
+				<tr>
+					<td>Südwestpfalz</td>
+					<td>PS</td>
+					<td>405 GU</td>
+				</tr>
+				<tr>
+					<td>Pirmasens</td>
+					<td>PS</td>
+					<td>405 GU</td>
+				</tr>
+				<tr>
+					<td>Zweibrücken</td>
+					<td>ZW</td>
+					<td>405 GU</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="tel:+49-6341-112" data-icon="phone">Anrufen</a></li>
+			</ul>
+		</div>
+	</div>
+</div><div data-role="page" id="rescuecoordinationcenter-rp-09-trier">
+	<div data-role="header" data-position="fixed">
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
+			<a href="#rescuecoordinationcenter-rp-01-index" class="ui-btn ui-btn-icon-right ui-icon-arrow-l ui-btn-icon-notext">Zurück</a>
+		</div>
+		<h1>Leitstelle Trier</h1>
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="slidefade" data-direction="reverse">Einstellungen</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext">Home</a>
+		</div>
+	</div>
+	<div data-role="content" role="main" class="ui-content">
+		<p><strong>Rufname:</strong> "Leitstelle Trier"</p>
+		<table data-role="table" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-text="Spalten">
+			<thead>
+				<tr>
+					<th>Stadt/Landkreis</th>
+					<th data-priority="1">Kürzel</th>
+					<th data-priority="persist">Funk</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Trier</td>
+					<td>TR</td>
+					<td>408 GU</td>
+				</tr>
+				<tr>
+					<td>Trier-Saarburg</td>
+					<td>TR</td>
+					<td>408 GU</td>
+				</tr>
+				<tr>
+					<td>Bernkastel-Wittlich</td>
+					<td>WIL</td>
+					<td>404 GU</td>
+				</tr>
+				<tr>
+					<td>Eifelkreis Bitburg-Prüm</td>
+					<td>BIT</td>
+					<td>408 GU</td>
+				</tr>
+				<tr>
+					<td>Vulkaneifel</td>
+					<td>DAU</td>
+					<td>404 GU</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="tel:+49-651-112" data-icon="phone">Anrufen</a></li>
+			</ul>
+		</div>
+	</div>
+</div><div data-role="page" id="rescuecoordinationcenter-sl-01-index">
+	<div data-role="header" data-position="fixed">
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
+			<a href="#rescuecoordinationcenter-01-index" class="ui-btn ui-btn-icon-right ui-icon-arrow-l ui-btn-icon-notext">Zurück</a>
+		</div>
+		<h1>Saarland</h1>
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="slidefade" data-direction="reverse">Einstellungen</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext">Home</a>
+		</div>
+	</div>
+	<div data-role="content" role="main" class="ui-content">
+		<ul data-role="listview" data-filter="true" data-filter-placeholder="Suche..." data-inset="false">
+			<li data-filtertext="">Leitstelle Winterberg<span class="ui-li-count">490</span></li>		
+		</ul>
+	</div>
+</div><div data-role="page" id="location-01-index" data-quicklinks="true">
+	<div data-role="header" data-position="fixed">
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-arrow-l ui-btn-icon-notext">Zurück</a>
+		</div>
+		<h1>Standort</h1>
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="slidefade" data-direction="reverse">Einstellungen</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext">Home</a>
+		</div>
+	</div>
+	<div data-role="content" role="main" class="ui-content">
+	</div>
+</div><div data-role="page" id="law-01-imprint">
+	<div data-role="header">
+		<h1>Kontakt</h1>
+	</div>
+	<div data-role="content" role="main" class="ui-content">
+		<p>Angaben gemäß §5 TMG:</p>
+		<p>Jonathan Starck<br>
+			Oberpforte 10<br>
+			55278 Dolgesheim</p>
+		<p>
+			<a href="mailto:support@rettapp.org?body=Bitte%20beachten%20Sie%2C%20dass%20alle%20Email-Anfragen%20%C3%BCber%20das%20Ticket-System%20von%20Cretection%20Web-%20%26%20Computertechnik%20l%C3%A4uft.%20Trotz%20allem%20ist%20die%20RettApp%20ein%20unabh%C3%A4ngige%20App%20ohne%20kommerzielle%20Absichten!" class="ui-btn ui-icon-mail ui-btn-icon-left">support@rettapp.org</a>
+			<a href="#law-02-picture" class="ui-btn ui-icon-camera ui-btn-icon-left" data-rel="dialog">Bild- &amp; Symbolrechte</a>
+		</p>
+	</div>
+</div><div data-role="page" id="law-02-picture">
+	<div data-role="header">
+		<h1>Bilder &amp; Symbole</h1>
+	</div>
+	<div data-role="content" role="main" class="ui-content">
+		<ul data-role="listview">
+			<li>RettApp-Logo by Jonathan Starck</li>
+			<li data-icon="info"><a href="http://dakirby309.deviantart.com" data-rel="external" target="foo">1391581044_Amazon by Dakirby309</a></li>
+			<li data-icon="info"><a href="https://www.iconfinder.com/iconsets/50-payment-system" data-rel="external" target="foo">1391581671_Amazon by Artem M.</a></li>
+			<li data-icon="info"><a href="https://www.iconfinder.com/iconsets/50-payment-system" data-rel="external" target="foo">1391581724_PayPal by Artem M.</a></li>
+		</ul>
 	</div>
 </div><div data-role="page" id="spellingalphabet-01-index">
 	<div data-role="header" data-position="fixed">
@@ -277,9 +958,31 @@
 			</tbody>
 		</table>
 	</div>
+</div><div data-role="page" id="other-01-donate" data-quicklinks="true">
+	<div data-role="header" data-position="fixed">
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-arrow-l ui-btn-icon-notext">Zurück</a>
+		</div>
+		<h1>Buy Me a Beer</h1>
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="slidefade" data-direction="reverse">Einstellungen</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext">Home</a>
+		</div>
+	</div>
+	<div data-role="content" role="main" class="ui-content">
+		<p>Diese App ist von Rettungsdienstler für Rettungsdienstler - uns ist wichtig, dass alle Informationen kostenlos und frei zugänglich für Sie zur Verfügung gestellt werden! Das Entwickeln/Bereitstellen ist leider nicht ohne finanziellen Aufwand möglich. Sollte Ihnen die RettApp gefallen so unterstützen Sie den Entwickler!</p>
+		<p class="align-center">
+			<a data-rel="external" href="http://www.amazon.de/registry/wishlist/YRKA7VXAPXGA"><img src="core/icons/1391581671_Amazon.png" alt="Amazon Wunschzettel" width="120" /></a>
+			<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=G62QH4JXWWUKU" data-rel="external" onclick="window.open(this.href, '_system', 'location=no');"><img src="core/icons/1391581724_PayPal.png" alt="PayPal" width="120" /></a>
+		</p>
+	</div>
 </div><div data-role="page" id="function-02-settings" data-quicklinks="true">
 	<div data-role="header" data-position="fixed">
-		<a href="#function-99-navigationpanel" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-bars">Menü</a>
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
+			<a data-rel="back" class="ui-btn ui-btn-icon-right ui-icon-arrow-l ui-btn-icon-notext">Zurück</a>
+		</div>
 		<h1>Einstellungen</h1>
 		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
 			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext">Einstellungen</a>
@@ -302,7 +1005,39 @@
 					<option value="0">On</option>
 				</select>
 			</div>
-			<input type="button" value="Speichern" id="saveSettings" data-icon="check">
+			<div class="ui-field-contain">
+				<label for="select-native-fc">Giftnotruf</label>
+				<select name="select-native-fc" id="settings-poison">
+					<option value="0">Bitte wählen</option>
+					<option value="+49-30-19240">Berlin</option>
+					<option value="+49-228-19240">Bonn</option>
+					<option value="+49-361-730730">Erfurt</option>
+					<option value="+49-761-19240">Freiburg</option>
+					<option value="+49-551-383180">Göttingen (Fachleute)</option>
+					<option value="+49-6841-19240">Homburg/Saar</option>
+					<option value="+49-6131-19240">Mainz</option>
+					<option value="+49-89-19240">München</option>
+					<option value="+49-911-3982451">Nürnberg</option>
+				</select>
+			</div>
+			<div class="ui-field-contain">
+				<label for="select-native-fc">Leitstelle</label>
+				<select name="select-native-fc" id="settings-rescuecoordinationcenter">
+					<option value="112">Bitte wählen</option>
+					<optgroup label="Rheinland-Pfalz (RP)">
+						<option value="+49-671-112">Bad Kreuznach</option>
+						<option value="+49-631-112">Kaiserslautern</option>
+						<option value="+49-261-112">Koblenz</option>
+						<option value="+49-621-19222">Ludwigshafen</option>
+						<option value="+49-6133-19222">Mainz</option>
+						<option value="+49-2602-112">Montabaur</option>
+						<option value="+49-6341-112">Südpfalz</option>
+						<option value="+49-651-112">Trier</option>
+					</optgroup>
+				</select>
+			</div>
+			<!--<input class="show-page-loading-msg" type="button" value="Speichern" id="saveSettings" data-icon="check">-->
+			<a id="saveSettings" class="ui-btn ui-btn-icon-left ui-icon-check ui-corner-all show-page-loading-msg" data-textonly="false" data-textvisible="true" data-msgtext="" data-inline="true">Speichern</a>
 		</form>
 	</div>
 </div><div data-role="panel" id="function-99-navigationpanel" data-position="left" data-display="overlay" data-theme="b">
@@ -310,15 +1045,19 @@
 		<li data-icon="back"><a href="#function-99-navigationpanel" data-rel="close">Schliessen</a></li>
 		<li data-role="list-divider">Hauptfunktionen</li>
 		<li><a href="#drugs-01-disclaimer"><img src="core/icons/medicine_sw_by_e-young.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Medikamente</a></li>
-		<li><img src="core/icons/1391013150_Hospital_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Krankenhäuser</li>
-		<li><img src="core/icons/1391013537_voice-support_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Leitstellen</li>
-		<li><img src="core/icons/1391013724_map_16x16_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Standort</a>
-		<li data-role="list-divider">Funktionslisten</li>
-		<li>Verbraucht</li>
-		<li>Übergabe</li>
-		<li data-role="list-divider">Sonstiges</li>
-		<li class="getPoisonNumber" data-icon="phone"><a href="">Giftnotruf</a></li>
+		<li><a href="#hospitals-01-index"><img src="core/icons/1391013150_Hospital_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Krankenhäuser</a></li>
+		<li><a href="#rescuecoordinationcenter-01-index"><img src="core/icons/1391013537_voice-support_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Leitstellen</a></li>
+		<li><a href="#location-01-index"><img src="core/icons/1391013724_map_16x16_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Standort</a></li>
+		<li data-role="list-divider">Schnellwahl</li>
+		<li data-icon="phone"><a class="getRescueCoordinationCenterNumber">Leitstelle</a></li>
+		<li data-icon="phone"><a class="getPoisonNumber">Giftnotruf</a></li>
+		<li data-role="list-divider">Funktionen</li>
+		<li>Rechner</li>
+		<li>Verbrauchtes</li>
 		<li><a href="#spellingalphabet-01-index">Buchstabiertafel</a></li>
 		<li>FMS-Kürzel</li>
+		<li>Trauma Leitlinien</li>
+		<li data-role="list-divider">Sonstiges</li>
+		<li data-icon="heart"><a href="#other-01-donate">Buy Me a Beer</a></li>
 	</ul>
 </div></body></html>

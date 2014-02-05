@@ -15,7 +15,8 @@ if (localStorage.getItem("settings") === null) {
 	var settings = {};
 	settings.startdisclaimer = '0';
 	settings.meddisclaimer = '0';
-	settings.poison = '0';
+	settings.poison = '112';
+	settings.rescuecoordinationcenter= '112';
 	localStorage.setItem("settings", JSON.stringify(settings));
 };
 if (localStorage.getItem("visiblemeddisclaimer") === null) {
@@ -37,9 +38,20 @@ function panelAndListRefresh() {
 function refreshSlider(refreshSliderID) {
 	$(refreshSliderID).slider().slider("refresh");
 }
+function refreshSelectMenu(refreshSelectMenuID) {
+	$(refreshSelectMenuID).selectmenu().selectmenu("refresh");
+}
 function changeSliderOnSettings(sliderID, sliderIDvalue) {
 	$(sliderID+' [value="'+sliderIDvalue+'"]').prop("selected", true);
 	$(sliderID).slider().slider("refresh");
+}
+function changeSelectMenuOnSettings(selectID, selectIDvalue) {
+	$(selectID+' [value="'+selectIDvalue+'"]').prop("selected", true);
+	$(selectID).selectmenu().selectmenu("refresh");
+}
+function changeSliderVisibleOnSettings(sliderID, sliderVisibleStatus) {
+	$(sliderID).slider(sliderVisibleStatus);
+	$(sliderID).slider("refresh");	
 }
 /* !jQuery Mobile Page Init Function */
 
@@ -55,23 +67,15 @@ function changeSliderOnSettings(sliderID, sliderIDvalue) {
 */
 $(document).on( "pagebeforeshow", '#function-02-settings', function(event) {
 	var settings = JSON.parse(localStorage.getItem('settings'));
-	if(settings.startdisclaimer == "1") {
-		changeSliderOnSettings('#settings-startdisclaimer', 1);
-	} else {
-		changeSliderOnSettings('#settings-startdisclaimer', 0);
-	}
 	if(localStorage.getItem("visiblemeddisclaimer") == '0'){
-		$("#settings-meddisclaimer").slider("disable");
-		$("#settings-meddisclaimer").slider("refresh");
+		changeSliderVisibleOnSettings("#settings-meddisclaimer", "disable");
 	}else{
-		$("#settings-meddisclaimer").slider("enable");
-		$("#settings-meddisclaimer").slider("refresh");
+		changeSliderVisibleOnSettings("#settings-meddisclaimer", "enable");
 	}
-	if(settings.meddisclaimer == "1") {
-		changeSliderOnSettings('#settings-meddisclaimer', 1);
-	} else {
-		changeSliderOnSettings('#settings-meddisclaimer', 0);
-	}
+	changeSliderOnSettings('#settings-startdisclaimer', settings.startdisclaimer);
+	changeSliderOnSettings('#settings-meddisclaimer', settings.meddisclaimer);
+	changeSelectMenuOnSettings('#settings-poison', settings.poison);
+	changeSelectMenuOnSettings('#settings-rescuecoordinationcenter', settings.rescuecoordinationcenter);
 });
 /* !Panel Menü */
 /*
@@ -91,9 +95,8 @@ $(document).on('pagebeforeshow', '#drugs-01-disclaimer', function(event) {
 	var settings = JSON.parse(localStorage.getItem('settings'));
 	if(settings.meddisclaimer == "1") {
 		$.mobile.changePage("#drugs-02-index");
-	};
+	}
 });
-/* !jQuery Mobile Page Show Function */
 /* !Activate state */
 /*
 	Der Aktiv-Status für den Link setzten. Es wird die aktuelle ID
@@ -105,8 +108,11 @@ $(document).on("pagebeforeshow", function(event) {
 	$('a.ui-btn-active').removeClass("ui-btn-active");
 	$('[href="#'+activePage+'"]').addClass("ui-btn-active");
 });
-$(document).on("pagebeforshow", function(event) {
-	$('.getPoisonNumber > a');
+/* !jQuery Mobile Page Show Function */
+$(document).on("pageshow", function(event) {
+	var settings = JSON.parse(localStorage.getItem('settings'));
+	$('.getPoisonNumber').attr("href", "tel:"+settings.poison);
+	$('.getRescueCoordinationCenterNumber').attr("href", "tel:"+settings.rescuecoordinationcenter);
 });
 /* !Settings speichern */
 /*
@@ -118,6 +124,8 @@ $(document).on( "pageshow", function(event) {
 		var settings = {};
 		settings.startdisclaimer = $('#settings-startdisclaimer').val();
 		settings.meddisclaimer = $('#settings-meddisclaimer').val();
+		settings.poison = $('#settings-poison').val();
+		settings.rescuecoordinationcenter = $('#settings-rescuecoordinationcenter').val();
 		localStorage.setItem("settings", JSON.stringify(settings));
 		location.reload(true);
 	});
@@ -126,4 +134,24 @@ $(document).on( "pageshow", function(event) {
 			localStorage.setItem("visiblemeddisclaimer", '1');
 		}
 	});
+});
+
+
+$(document).on("click", ".show-page-loading-msg", function() {
+	var $this = $( this ),
+		theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
+		msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
+		textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
+		textonly = !!$this.jqmData( "textonly" );
+		html = $this.jqmData( "html" ) || "";
+	$.mobile.loading( "show", {
+		text: msgText,
+		textVisible: textVisible,
+		theme: theme,
+		textonly: textonly,
+		html: html
+    });
+})
+.on( "click", ".hide-page-loading-msg", function() {
+    $.mobile.loading( "hide" );
 });
