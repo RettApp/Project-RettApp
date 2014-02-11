@@ -11,5 +11,8 @@
 		</div>
 	</div>
 	<div data-role="content" role="main" class="ui-content">
+		<div id="location-01-index-map_canvas">
+			
+		</div>
 	</div>
 </div>

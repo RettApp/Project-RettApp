@@ -15,6 +15,8 @@ if (localStorage.getItem("settings") === null) {
 	var settings = {};
 	settings.startdisclaimer = '0';
 	settings.meddisclaimer = '0';
+	settings.position = '0';
+	settings.zoomrange = '10';
 	settings.poison = '112';
 	settings.rescuecoordinationcenter= '112';
 	localStorage.setItem("settings", JSON.stringify(settings));
@@ -27,6 +29,7 @@ if (localStorage.getItem("visiblemeddisclaimer") === null) {
 	Setzten der globalen Variablen.
 */
 var activePage;
+var map, GeoMarker, currentPosition;
 /* ! Globale Functionen*/
 /*
 	Hier werden die globalgültigen Functionen definiert!
@@ -53,6 +56,16 @@ function changeSliderVisibleOnSettings(sliderID, sliderVisibleStatus) {
 	$(sliderID).slider(sliderVisibleStatus);
 	$(sliderID).slider("refresh");	
 }
+function changeSelectMenuVisibleOnSettings(selectID, selectVisibleStatus) {
+	$(selectID).selectmenu(selectVisibleStatus);
+	$(selectID).selectmenu("refresh");
+}
+function openDeviceBrowser (externalLinkToOpen){
+		window.open(externalLinkToOpen, '_system', 'location=no');
+}
+function initializePositionMap(){
+	
+}
 /* !jQuery Mobile Page Init Function */
 
 /* !jQuery Mobile Page Create Function */
@@ -72,8 +85,15 @@ $(document).on( "pagebeforeshow", '#function-02-settings', function(event) {
 	}else{
 		changeSliderVisibleOnSettings("#settings-meddisclaimer", "enable");
 	}
+	if(settings.position == '1'){
+		changeSelectMenuVisibleOnSettings("#settings-zoomrange", "disable");
+	}else{
+		changeSelectMenuVisibleOnSettings("#settings-zoomrange", "enable");
+	}
 	changeSliderOnSettings('#settings-startdisclaimer', settings.startdisclaimer);
 	changeSliderOnSettings('#settings-meddisclaimer', settings.meddisclaimer);
+	changeSliderOnSettings('#settings-position', settings.position);
+	changeSelectMenuOnSettings('#settings-zoomrange', settings.zoomrange);
 	changeSelectMenuOnSettings('#settings-poison', settings.poison);
 	changeSelectMenuOnSettings('#settings-rescuecoordinationcenter', settings.rescuecoordinationcenter);
 });
@@ -96,6 +116,9 @@ $(document).on('pagebeforeshow', '#drugs-01-disclaimer', function(event) {
 	if(settings.meddisclaimer == "1") {
 		$.mobile.changePage("#drugs-02-index");
 	}
+});
+$(document).on("pageshow", '#location-01-index', function() {
+	initializePositionMap ();
 });
 /* !Activate state */
 /*
@@ -124,6 +147,8 @@ $(document).on( "pageshow", function(event) {
 		var settings = {};
 		settings.startdisclaimer = $('#settings-startdisclaimer').val();
 		settings.meddisclaimer = $('#settings-meddisclaimer').val();
+		settings.position = $('#settings-position').val();
+		settings.zoomrange = $('#settings-zoomrange').val();
 		settings.poison = $('#settings-poison').val();
 		settings.rescuecoordinationcenter = $('#settings-rescuecoordinationcenter').val();
 		localStorage.setItem("settings", JSON.stringify(settings));
@@ -152,6 +177,6 @@ $(document).on("click", ".show-page-loading-msg", function() {
 		html: html
     });
 })
-.on( "click", ".hide-page-loading-msg", function() {
+$(document).on( "click", ".hide-page-loading-msg", function() {
     $.mobile.loading( "hide" );
 });

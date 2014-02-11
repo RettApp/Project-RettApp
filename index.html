@@ -9,16 +9,18 @@
 	Source: https://github.com/RettApp/
 -->
 <head>
-	<script src="phonegap.js"></script><script src="InAppBrowser.js"></script>	<title>RettApp</title>
+	<title>RettApp</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="core/js/jquery/mobile/1.4.0/jquery.mobile-1.4.0.min.css">
 	<link rel="stylesheet" href="core/css/custom.css">
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
-	<script type="text/javascript" src="core/js/jquery/core/1.10.2.min.js"></script>
-	<script type="text/javascript" src="core/js/jquery/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
-	<script type="text/javascript" src="core/js/userdef.js"></script>
-	<script type="text/javascript" src="core/js/leitstellen.js"></script>
+	<script src="cordova.js"></script>	<script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+	<script src="core/js/jquery/core/1.10.2.min.js"></script>
+	<script src="core/js/app.js"></script>
+	<script src="core/js/jquery/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+	<script src="core/js/plugins/google-maps-utility-library-v3/geolocationmarker/src/geolocationmarker-compiled.js"></script>
+	<script src="core/js/userdef.js"></script>
+	<script src="core/js/leitstellen.js"></script>
 </head><body><div data-role="page" id="main-01-disclaimer">
 	<div data-role="content" role="main" class="ui-content">
 		<div class="rettapp-banner">
@@ -749,6 +751,9 @@
 		</div>
 	</div>
 	<div data-role="content" role="main" class="ui-content">
+		<div id="location-01-index-map_canvas">
+			
+		</div>
 	</div>
 </div><div data-role="page" id="law-01-imprint">
 	<div data-role="header">
@@ -770,10 +775,16 @@
 	</div>
 	<div data-role="content" role="main" class="ui-content">
 		<ul data-role="listview">
-			<li>RettApp-Logo by Jonathan Starck</li>
-			<li data-icon="info"><a href="http://dakirby309.deviantart.com" data-rel="external" target="foo">1391581044_Amazon by Dakirby309</a></li>
-			<li data-icon="info"><a href="https://www.iconfinder.com/iconsets/50-payment-system" data-rel="external" target="foo">1391581671_Amazon by Artem M.</a></li>
-			<li data-icon="info"><a href="https://www.iconfinder.com/iconsets/50-payment-system" data-rel="external" target="foo">1391581724_PayPal by Artem M.</a></li>
+			<li>RettApp Logo by Jonathan Starck</li>
+			<li data-icon="info">
+				<a href="http://dakirby309.deviantart.com/" data-rel="external" target="foo">1391581044_Amazon by Dakirby309</a>
+			</li>
+			<li data-icon="info">
+				<a href="https://www.iconfinder.com/iconsets/50-payment-system" data-rel="external" target="foo">1391581671_Amazon by Artem M.</a>
+			</li>
+			<li data-icon="info">
+				<a href="https://www.iconfinder.com/iconsets/50-payment-system" data-rel="external" target="foo">1391581724_PayPal by Artem M.</a>
+			</li>
 		</ul>
 	</div>
 </div><div data-role="page" id="spellingalphabet-01-index">
@@ -973,8 +984,8 @@
 	<div data-role="content" role="main" class="ui-content">
 		<p>Diese App ist von Rettungsdienstler für Rettungsdienstler - uns ist wichtig, dass alle Informationen kostenlos und frei zugänglich für Sie zur Verfügung gestellt werden! Das Entwickeln/Bereitstellen ist leider nicht ohne finanziellen Aufwand möglich. Sollte Ihnen die RettApp gefallen so unterstützen Sie den Entwickler!</p>
 		<p class="align-center">
-			<a data-rel="external" href="http://www.amazon.de/registry/wishlist/YRKA7VXAPXGA"><img src="core/icons/1391581671_Amazon.png" alt="Amazon Wunschzettel" width="120" /></a>
-			<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=G62QH4JXWWUKU" data-rel="external" onclick="window.open(this.href, '_system', 'location=no');"><img src="core/icons/1391581724_PayPal.png" alt="PayPal" width="120" /></a>
+			<a href="http://www.amazon.de/registry/wishlist/YRKA7VXAPXGA" data-rel="external" target="foo"><img src="core/icons/1391581671_Amazon.png" alt="1391581671_Amazon" width="120" /></a>
+			<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=G62QH4JXWWUKU" data-rel="external" target="foo"><img src="core/icons/1391581724_PayPal.png" alt="1391581724_PayPal" width="120" /></a>
 		</p>
 	</div>
 </div><div data-role="page" id="function-02-settings" data-quicklinks="true">
@@ -1006,9 +1017,47 @@
 				</select>
 			</div>
 			<div class="ui-field-contain">
+				<label for="settings-position">Position:</label>
+				<select name="flip-1" id="settings-position" data-role="slider">
+					<option value="1">Off</option>
+					<option value="0">On</option>
+				</select>
+			</div>
+			<div class="ui-field-contain">
+				<label for="select-native-fc">Kartenauflösung</label>
+				<select name="select-native-fc" id="settings-zoomrange">
+					<option value="0">Weit weg</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+					<option value="15">15</option>
+					<option value="16">16</option>
+					<option value="17">17</option>
+					<option value="18">18</option>
+					<option value="19">19</option>
+					<option value="20">20</option>
+					<option value="21">21</option>
+					<option value="22">22</option>
+					<option value="23">23</option>
+					<option value="24">24</option>
+					<option value="25">Nah dran</option>
+				</select>
+			</div>
+			<div class="ui-field-contain">
 				<label for="select-native-fc">Giftnotruf</label>
 				<select name="select-native-fc" id="settings-poison">
-					<option value="0">Bitte wählen</option>
+					<option value="112">Bitte wählen</option>
 					<option value="+49-30-19240">Berlin</option>
 					<option value="+49-228-19240">Bonn</option>
 					<option value="+49-361-730730">Erfurt</option>

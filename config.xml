@@ -17,25 +17,18 @@
 		RettApp
 	</name>
 	<description>
-		RettApp Version für ganz Deutschland
+		RettApp Version für ganz Deutschland. Die RettApp soll für Personen in der Notfallmedizin eine Hilfestellung im Alltag sein. Entwickelt durch einen Rettungsassistenten in Rheinland-Pfalz, der die Idee für diese App nun schon mehrere Jahre verfolgt.
 	</description>
 	<author href="http://www.rettapp.org/" email="support@rettapp.org">
 		Jonathan Starck
 	</author>
 	
-	<preference name="phonegap-version" value="3.1.0" />
-	<preference name="permissions" value="none"/>
+	<preference name="phonegap-version" value="3.3.0" />
 	
 	<icon src="icon.png" />
 	
 	<access origin="*" browserOnly="true"/>
 	
-	<feature name="http://api.phonegap.com/1.0/device"/>
-	<feature name="http://api.phonegap.com/1.0/geolocation"/>
-	<feature name="http://api.phonegap.com/1.0/network"/>
-	<feature name="http://api.phonegap.com/1.0/file"/>
-	
 	<gap:plugin name="org.apache.cordova.inappbrowser" />
-	<plugin name="InAppBrowser" value="CDVInAppBrowser" />
-	<plugin name="InAppBrowser" />
+	<gap:plugin name="org.apache.cordova.geolocation" />
 </widget>
