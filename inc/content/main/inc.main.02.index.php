@@ -16,7 +16,7 @@
 			<li><a href="#drugs-01-disclaimer"><img src="core/icons/medicine_sw_by_e-young.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Medikamente</a></li>
 			<li><a href="#hospitals-01-index"><img src="core/icons/1391013150_Hospital_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Krankenhäuser</a></li>
 			<li><a href="#rescuecoordinationcenter-01-index"><img src="core/icons/1391013537_voice-support_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Leitstellen</a></li>
-			<li><a href="#location-01-index"><img src="core/icons/1391013724_map_16x16_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Standort</a></li>
+			<li><a href="#location-01-index" data-ajax="false"><img src="core/icons/1391013724_map_16x16_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none" />Standort</a></li>
 		</ul>
 		<ul data-role="listview" data-inset="true">
 			<li data-role="list-divider">Schnellwahl</li>

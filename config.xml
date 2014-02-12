@@ -23,12 +23,15 @@
 		Jonathan Starck
 	</author>
 	
-	<preference name="phonegap-version" value="3.3.0" />
+	<preference name="phonegap-version" value="3.2.0" />
+	<preference name="permissions" value="none"/>
 	
 	<icon src="icon.png" />
 	
-	<access origin="*" browserOnly="true"/>
 	
-	<gap:plugin name="org.apache.cordova.inappbrowser" />
-	<gap:plugin name="org.apache.cordova.geolocation" />
+	<gap:plugin name="org.apache.cordova.inappbrowser"/>
+	<gap:plugin name="org.apache.cordova.geolocation"/>
+	
+	<access origin="*" subdomains="true" />
+	
 </widget>

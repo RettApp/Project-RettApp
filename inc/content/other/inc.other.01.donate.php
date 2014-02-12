@@ -14,7 +14,7 @@
 		<p>Diese App ist von Rettungsdienstler für Rettungsdienstler - uns ist wichtig, dass alle Informationen kostenlos und frei zugänglich für Sie zur Verfügung gestellt werden! Das Entwickeln/Bereitstellen ist leider nicht ohne finanziellen Aufwand möglich. Sollte Ihnen die RettApp gefallen so unterstützen Sie den Entwickler!</p>
 		<p class="align-center">
 			<a href="http://www.amazon.de/registry/wishlist/YRKA7VXAPXGA" data-rel="external" target="foo"><img src="core/icons/1391581671_Amazon.png" alt="1391581671_Amazon" width="120" /></a>
-			<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=G62QH4JXWWUKU" data-rel="external" target="foo"><img src="core/icons/1391581724_PayPal.png" alt="1391581724_PayPal" width="120" /></a>
+			<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=G62QH4JXWWUKU" data-rel="external" target="foo"><img src="core/icons/1391581724_PayPal.png" alt="1391581724_PayPal" width="120" /></a>
 		</p>
 	</div>
 </div>

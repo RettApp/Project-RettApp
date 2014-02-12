@@ -24,3 +24,4 @@
 #location-01-index { width: 100%; height: 90%; padding: 0; }
 #location-01-index .ui-content { width: 100%; height: 100%; padding: 0; }
 #location-01-index-map_canvas {width: 100%; height: 65%;}
+#location-01-map_canvas_info {padding: 1em;}

@@ -1,16 +1,6 @@
-/* !Copyright */
-/*
-	Project: RettApp
-	Description: RettApp is an Open-Source-Project for persons working at a emergency medical service in Germany
-	Author: Jonathan Starck 
-	Licence: GNU GENERAL PUBLIC LICENSE Version 2, June 1991 & European Union Public Licence
-	Source: https://github.com/RettApp/
-*/
-/* !Localstorage Check */
-/*
-	Checken des LocalStorage-Speicher. Wenn nicht vorhanden wird der Wert 0 gesetzt.
-	Bitte Definition beachten z.B.: Disclaimer = 0 = Disclaimer aktiv!
-*/
+var currentFeature_or_Features = null;
+var watchID = null;
+var map, GeoMarker, activePage, geolocpoint;
 if (localStorage.getItem("settings") === null) {
 	var settings = {};
 	settings.startdisclaimer = '0';
@@ -23,20 +13,41 @@ if (localStorage.getItem("settings") === null) {
 };
 if (localStorage.getItem("visiblemeddisclaimer") === null) {
 	localStorage.setItem("visiblemeddisclaimer", '0');
+} 
+function initPositionMap() {
+	var settings = JSON.parse(localStorage.getItem('settings'));
+	var zoomrange = +settings.zoomrange;
+	var mapOptions = {
+		zoom: zoomrange,
+		center: new google.maps.LatLng(-34.397, 150.644),
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		mapTypeControlOptions: {
+			style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+		},
+		zoomControl: false,
+	};
+	map = new google.maps.Map(document.getElementById('location-01-index-map_canvas'), mapOptions);
+	GeoMarker = new GeolocationMarker();
+	GeoMarker.setCircleOptions({fillColor: '#808080'});
+	var watchID = navigator.geolocation.watchPosition(function(pos){
+		geolocpoint = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+		map.setCenter(geolocpoint);
+		map.setZoom(zoomrange);
+	}, function(msg){
+		console.log(typeof msg == 'string' ? msg : "error");
+	}, {maximumAge: 4000, enableHighAccuracy: true});
+	google.maps.event.addListenerOnce(GeoMarker, 'position_changed', function() {
+		map.setCenter(this.getPosition());
+		map.fitBounds(this.getBounds());
+		map.setZoom(zoomrange);
+	});
+	GeoMarker.setMap(map);
+	showGeoJSON(geojson_leitstellen);
 }
-/* !Globale Variablen */
-/*
-	Setzten der globalen Variablen.
-*/
-var activePage;
-var map, GeoMarker, currentPosition;
-/* ! Globale Functionen*/
-/*
-	Hier werden die globalgültigen Functionen definiert!
-*/
 function panelAndListRefresh() {
 	$('body > [data-role="panel"]').panel();
 	$('body > [data-role="panel"] [data-role="listview"]').listview().listview('refresh');
+	$('body > [data-role="page"] [data-role="listview"]').listview().listview('refresh');
 }
 function refreshSlider(refreshSliderID) {
 	$(refreshSliderID).slider().slider("refresh");
@@ -63,22 +74,59 @@ function changeSelectMenuVisibleOnSettings(selectID, selectVisibleStatus) {
 function openDeviceBrowser (externalLinkToOpen){
 		window.open(externalLinkToOpen, '_system', 'location=no');
 }
-function initializePositionMap(){
-	
+function showGeoJSON(geojson, style){
+	currentFeature_or_Features = new GeoJSON(geojson, style || null);
+	if (currentFeature_or_Features.type && currentFeature_or_Features.type == "Error"){
+		document.getElementById("putsomthing").value = currentFeature_or_Features.message;
+		return;
+	}
+	if (currentFeature_or_Features.length){
+		for (var i = 0; i < currentFeature_or_Features.length; i++){
+			if(currentFeature_or_Features[i].length){
+				for(var j = 0; j < currentFeature_or_Features[i].length; j++){
+					currentFeature_or_Features[i][j].setMap(map);
+					if(currentFeature_or_Features[i][j].geojsonProperties) {
+						setInfoWindow(currentFeature_or_Features[i][j]);
+					}
+				}
+			}else{
+				currentFeature_or_Features[i].setMap(map);
+			}
+			if (currentFeature_or_Features[i].geojsonProperties) {
+				setInfoWindow(currentFeature_or_Features[i]);
+			}
+		}
+	}else{
+		currentFeature_or_Features.setMap(map)
+		if (currentFeature_or_Features.geojsonProperties) {
+			setInfoWindow(currentFeature_or_Features);
+		}
+	}
 }
-/* !jQuery Mobile Page Init Function */
-
-/* !jQuery Mobile Page Create Function */
-
-/* !jQuery Mobile Page before Show Function */
-/* !Settings auslesen */
-/*
-	Die Settings werden aus localStorage ausgelesen um sie im folgendem Anzuzeigen.
-	Initial sind die entsprechenden Variablen auf "0" gesetzt. Diese Funktionen sind negativiert!
-	Als erstes wird gecheckt ob die entsprechende verändert wurde.
-	Sollte dies der Fall wird der zugehörige Slider deaktiviert/verändert.
-*/
-$(document).on( "pagebeforeshow", '#function-02-settings', function(event) {
+function setInfoWindow (feature) {
+	google.maps.event.addListener(feature, "click", function(event) {
+		var content = "<b>Aktuelle Leitstelle:</b>";
+		for (var key in this.geojsonProperties) {
+			if(key != "Telefon"){
+				content += "<br />"+key+": "+this.geojsonProperties[key];
+			}
+		}
+		content += '<p><a href="tel:'+this.geojsonProperties["Telefon"]+'" class="ui-btn ui-icon-phone ui-btn-icon-left ui-corner-all">Diese Anrufen</a></p>';
+		$('#location-01-map_canvas_info').html(content);
+	});
+}
+$(document).on("pagebeforeshow", function(event) {
+	panelAndListRefresh();
+});
+$(document).on("pageshow", "#location-01-index", function() {
+	var settings = JSON.parse(localStorage.getItem('settings'));
+	if(settings.position == '0'){
+		initPositionMap();
+	}else{
+		$('#location-01-index-map_canvas').html('<p>Die Funktion ist deaktiviert.</p>');
+	}
+});
+$(document).on("pagebeforeshow", "#function-02-settings", function(event) {
 	var settings = JSON.parse(localStorage.getItem('settings'));
 	if(localStorage.getItem("visiblemeddisclaimer") == '0'){
 		changeSliderVisibleOnSettings("#settings-meddisclaimer", "disable");
@@ -97,52 +145,29 @@ $(document).on( "pagebeforeshow", '#function-02-settings', function(event) {
 	changeSelectMenuOnSettings('#settings-poison', settings.poison);
 	changeSelectMenuOnSettings('#settings-rescuecoordinationcenter', settings.rescuecoordinationcenter);
 });
-/* !Panel Menü */
-/*
-	Das PanelMenü ist seperat zu data-role="page" im QuellCode.
-	Aktivierung um trotzdem es als Panel anzuzeigen.
-*/
-$(document).on("pagebeforeshow", function(event) {
-	panelAndListRefresh();
-});
-$(document).on('pagebeforeshow', '#main-01-disclaimer', function(event) {
+$(document).on("pagebeforeshow", "#main-01-disclaimer", function(event) {
 	var settings = JSON.parse(localStorage.getItem('settings'));
 	if(settings.startdisclaimer == "1") {
 		$.mobile.changePage("#main-02-index");
 	};
 });
-$(document).on('pagebeforeshow', '#drugs-01-disclaimer', function(event) {
+$(document).on("pagebeforeshow", "#drugs-01-disclaimer", function(event) {
 	var settings = JSON.parse(localStorage.getItem('settings'));
 	if(settings.meddisclaimer == "1") {
 		$.mobile.changePage("#drugs-02-index");
 	}
 });
-$(document).on("pageshow", '#location-01-index', function() {
-	initializePositionMap ();
-});
-/* !Activate state */
-/*
-	Der Aktiv-Status für den Link setzten. Es wird die aktuelle ID
-	ermittelt und allen Links mit verweiß auf dieses ID der aktive State
-	vergeben.
-*/
 $(document).on("pagebeforeshow", function(event) {
 	activePage = $.mobile.activePage.attr("id");
 	$('a.ui-btn-active').removeClass("ui-btn-active");
 	$('[href="#'+activePage+'"]').addClass("ui-btn-active");
 });
-/* !jQuery Mobile Page Show Function */
 $(document).on("pageshow", function(event) {
 	var settings = JSON.parse(localStorage.getItem('settings'));
 	$('.getPoisonNumber').attr("href", "tel:"+settings.poison);
 	$('.getRescueCoordinationCenterNumber').attr("href", "tel:"+settings.rescuecoordinationcenter);
 });
-/* !Settings speichern */
-/*
-	Die Settings werden bei klick auf den Button #saveSettings in loaclStore als JSON String gespeichert.
-	Der JSON String ermöglichst die optimierung vom localStorge
-*/
-$(document).on( "pageshow", function(event) {
+$(document).on("pageshow", function(event) {
 	$("#saveSettings").click(function(){
 		var settings = {};
 		settings.startdisclaimer = $('#settings-startdisclaimer').val();
@@ -160,8 +185,6 @@ $(document).on( "pageshow", function(event) {
 		}
 	});
 });
-
-
 $(document).on("click", ".show-page-loading-msg", function() {
 	var $this = $( this ),
 		theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
@@ -177,6 +200,6 @@ $(document).on("click", ".show-page-loading-msg", function() {
 		html: html
     });
 })
-$(document).on( "click", ".hide-page-loading-msg", function() {
-    $.mobile.loading( "hide" );
+.on("click", ".hide-page-loading-msg", function() {
+    $.mobile.loading("hide");
 });

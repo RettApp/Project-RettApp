@@ -34,7 +34,7 @@
 				</select>
 			</div>
 			<div class="ui-field-contain">
-				<label for="select-native-fc">Kartenauflösung</label>
+				<label for="settings-zoomrange">Kartenauflösung</label>
 				<select name="select-native-fc" id="settings-zoomrange">
 					<option value="0">Weit weg</option>
 					<option value="1">1</option>
@@ -65,7 +65,7 @@
 				</select>
 			</div>
 			<div class="ui-field-contain">
-				<label for="select-native-fc">Giftnotruf</label>
+				<label for="settings-poison">Giftnotruf</label>
 				<select name="select-native-fc" id="settings-poison">
 					<option value="112">Bitte wählen</option>
 					<option value="+49-30-19240">Berlin</option>
@@ -80,7 +80,7 @@
 				</select>
 			</div>
 			<div class="ui-field-contain">
-				<label for="select-native-fc">Leitstelle</label>
+				<label for="settings-rescuecoordinationcenter">Leitstelle</label>
 				<select name="select-native-fc" id="settings-rescuecoordinationcenter">
 					<option value="112">Bitte wählen</option>
 					<optgroup label="Rheinland-Pfalz (RP)">

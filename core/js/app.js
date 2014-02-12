@@ -29,12 +29,11 @@ $(document).one("mobileinit", function(){
 $.when(gapReady, jqmReady).then(myAppLogic);
 
 // App Logic
-function myAppLogic()
-{
+function myAppLogic(){
 	var obj = $('a[data-rel="external"]');
 	$.each(obj, function(){
 		currentLink = $(this).attr('href');
         $(this).attr('href', '#');
         $(this).attr('onclick', 'openDeviceBrowser("'+currentLink+'")' );
-    })
+    });
 }

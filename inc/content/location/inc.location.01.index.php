@@ -12,7 +12,9 @@
 	</div>
 	<div data-role="content" role="main" class="ui-content">
 		<div id="location-01-index-map_canvas">
-			
+		</div>
+		<div id="location-01-map_canvas_info">
+			<p>Klicken Sie auf die Karte für mehr Inforamtionen</p>
 		</div>
 	</div>
 </div>
