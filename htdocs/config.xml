@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- !Copyright -->
+<!--
+	Project: RettApp
+	Description: RettApp is an Open-Source-Project for persons working at a emergency medical service in Germany
+	Author: Jonathan Starck 
+	Licence: GNU GENERAL PUBLIC LICENSE Version 2, June 1991 & European Union Public Licence
+	Source: https://github.com/RettApp/
+-->
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+	xmlns:gap   = "http://phonegap.com/ns/1.0"
+	id          = "org.rettapp.app"
+	versionCode = "002" 
+	version     = "0.0.2" >
+
+	<name>
+		RettApp
+	</name>
+	<description>
+		RettApp Version für ganz Deutschland. Die RettApp soll für Personen in der Notfallmedizin eine Hilfestellung im Alltag sein. Entwickelt durch einen Rettungsassistenten aus Rheinland-Pfalz, der die Idee für diese App nun schon mehrere Jahre verfolgt.
+	</description>
+	<author href="http://www.rettapp.org/" email="support@rettapp.org">
+		Jonathan Starck
+	</author>
+	
+	<preference name="phonegap-version" value="3.2.0" />
+	<preference name="permissions" value="none"/>
+	
+	<icon src="icon.png" />
+	
+	<icon src="core/icons/iOS/Icon-72.png" gap:platform="ios" width="72" height="72" />
+	<icon src="core/icons/iOS/Icon-76@2x.png" gap:platform="ios" width="152" height="152" />
+	<icon src="core/icons/iOS/Icon.png" gap:platform="ios" width="57" height="57" />
+	<icon src="core/icons/iOS/Icon-72@2x.png" gap:platform="ios" width="144" height="144" />
+	<icon src="core/icons/iOS/Icon-76.png" gap:platform="ios" width="76" height="76" />
+	<icon src="core/icons/iOS/Icon@2x.png" gap:platform="ios" width="114" height="114" />
+	<icon src="core/icons/iOS/Icon-60@2x.png" gap:platform="ios" width="120" height="120" />
+	
+	<icon src="core/icons/Android/drawable-ldpi/ic_launcher.png" gap:platform="android" gap:density="ldpi" />
+	<icon src="core/icons/Android/drawable-mdpi/ic_launcher.png" gap:platform="android" gap:density="mdpi" />
+	<icon src="core/icons/Android/drawable-hdpi/ic_launcher.png" gap:platform="android" gap:density="hdpi" />
+	<icon src="core/icons/Android/drawable-xhdpi/ic_launcher.png" gap:platform="android" gap:density="xhdpi" />
+	
+	
+	<gap:plugin name="org.apache.cordova.inappbrowser"/>
+	<gap:plugin name="org.apache.cordova.geolocation"/>
+	<gap:plugin name="org.apache.cordova.vibration"/>
+	<gap:plugin name="nl.x-services.plugins.launchmyapp">
+		<param name="URL_SCHEME" value="rettapp" />
+	</gap:plugin>
+	
+	<access origin="*" subdomains="true" />
+	
+</widget>

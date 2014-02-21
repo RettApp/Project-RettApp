@@ -1,0 +1,41 @@
+/* !Copyright */
+/*
+	Project: RettApp
+	Description: RettApp is an Open-Source-Project for persons working at a emergency medical service in Germany
+	Author: Jonathan Starck 
+	Licence: GNU GENERAL PUBLIC LICENSE Version 2, June 1991 & European Union Public Licence
+	Source: https://github.com/RettApp/
+*/
+.nowrap {white-space: nowrap;}
+.align-center {
+	text-align: center;
+	margin: 0 auto;
+}
+.rettapp-banner {
+	width: 80%;
+	text-align: center;
+	margin: 0 auto;
+}
+.rettapp-banner img {
+	width: 100%;
+	max-width: 973px;
+}
+img.desaturate {
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	filter: grayscale(100%);
+}
+div.result-corners {
+    border-style: dashed;
+    border-width: 0.15em;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding: 0.1em 1em;
+    margin: 1em 0;
+    background: #FADDDD;
+}
+#location-01-index { width: 100%; height: 90%; padding: 0; }
+#location-01-index .ui-content { width: 100%; height: 100%; padding: 0; }
+#location-01-index-map_canvas {width: 100%; height: 65%;}
+#location-01-map_canvas_info, #location-01-map_canvas_stoplocation {padding: 0 1em;}
