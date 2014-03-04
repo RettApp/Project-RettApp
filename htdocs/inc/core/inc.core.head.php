@@ -15,6 +15,8 @@
 	<link rel="stylesheet" href="core/css/custom.css">
 	<script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
 	<script src="core/js/jquery/core/1.11.0.min.js"></script>
+	<script src="core/js/jquery/ui/1.10.4/jquery-ui-1.10.4.custom.min.js"></script>
+	<script src="core/js/jquery/ui/jquery.ui.touch-punch.min.js"></script>
 	<script src="core/js/leitstellen.min.js"></script>
 	<!--<script src="core/js/hospitals.min.js"></script>-->
 	<?php

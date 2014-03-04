@@ -1,6 +1,6 @@
 var currentFeature_or_Features = null;
 var watchID = null;
-var map, GeoMarker, activePage, geolocpoint;
+var map, GeoMarker, activePage, geolocpoint, results, correspond, unityLabel, unityValue, agentAmount, liquidAmount, unityPerKg, patientWeight;
 if (localStorage.getItem("settings") === null) {
 	var settings = {};
 	settings.startdisclaimer = '0';
@@ -136,6 +136,47 @@ function setInfoWindow (feature) {
 		$('#location-01-map_canvas_info').html(content);
 	});
 }
+function restoreOrder (listToOrder, listOrder, kindOfList, disableSort){
+	var list = $(listToOrder);
+	if (list == null) {
+		return
+	}
+	var order = localStorage.getItem(listOrder);
+	if (!order) {
+		return
+	}
+	var IDs = order.split(",");
+	var items = list.sortable("toArray", {
+		attribute: "name"
+	});
+	var rebuild = new Array();
+	console.log(items.length);
+	for (var v = 0, len = items.length; v < len; v++) {
+		rebuild[items[v]] = items[v];
+    }
+    console.log(IDs.length);
+    for (var i = 0, n = IDs.length; i < n; i++) {
+    	var itemID = IDs[i];
+    	if (itemID in rebuild) {
+    		var item = rebuild[itemID];
+    		var child = list.children("[name='"+item+"']");
+    		var savedOrd = list.children("[name='"+itemID+"']");
+    		child.remove();
+    		list.filter(":first").append(savedOrd);
+    	}
+    }
+    switch(kindOfList) {
+	    case "collapsibleset":
+	    	list.collapsibleset("refresh");
+	    	break;
+	    case "listview":
+	    	list.listview("refresh");
+	    	break;
+    }
+    if(disableSort == true) {
+	    list.sortable("disable");
+    }
+};
 $(document).on("pageshow", "#location-01-index", function() {
 	var settings = JSON.parse(localStorage.getItem('settings'));
 	if(settings.position == '0'){
@@ -145,6 +186,7 @@ $(document).on("pageshow", "#location-01-index", function() {
 	}
 });
 $(document).on("pagebeforeshow", "#function-02-settings", function(event) {
+	panelAndListRefresh();
 	var settings = JSON.parse(localStorage.getItem('settings'));
 	if(localStorage.getItem("visiblemeddisclaimer") == '0'){
 		changeSliderVisibleOnSettings("#settings-meddisclaimer", "disable");
@@ -197,6 +239,65 @@ $(document).on("pageshow", function(event) {
 	$('.getPoisonNumber').attr("href", "tel:"+settings.poison);
 	$('.getRescueCoordinationCenterNumber').attr("href", "tel:"+settings.rescuecoordinationcenter);
 });
+$(document).on("pageshow", "#function-03-dose", function(event) {
+	$("input").change(function() {
+	    unityLabel = $("#unity :radio:checked").attr('label');
+	    unityValue = $("#unity :radio:checked").val();
+	    agentAmount = $("#agent-amount").val();
+	    liquidAmount = $('#liquid-amount').val();
+	    unityPerKg = $('#unity-per-kg').val();
+	    patientWeight = $('#patient-weight').val();
+	    
+	    if(unityValue === '1'){
+	        results = '<b>'+agentAmount+unityLabel+" auf "+liquidAmount+" ml</b><br>";
+	        results += agentAmount*1000+'mg'+" auf "+liquidAmount+" ml<br>";
+	        results += agentAmount*1000000+'µg'+" auf "+liquidAmount+" ml";
+	        $('#doseResultsConditionDefinition').html(results);
+	    }else if(unityValue === '1000'){
+	        results = agentAmount/1000+"g"+" auf "+liquidAmount+" ml</b><br>";
+	        results += '<b>'+agentAmount+unityLabel+" auf "+liquidAmount+" ml</b><br>";
+	        results += agentAmount*1000+'µg'+" auf "+liquidAmount+" ml";
+	        $('#doseResultsConditionDefinition').html(results);
+	    }else if(unityValue === '1000000') {
+	        results = agentAmount/1000000+"g auf "+liquidAmount+" ml</b><br>";
+	        results += agentAmount/1000+"mg auf "+liquidAmount+" ml<br>";
+	        results += '<b>'+agentAmount+unityLabel+" auf "+liquidAmount+" ml<b>";
+	        $('#doseResultsConditionDefinition').html(results);
+	    }
+	    if(unityValue === '1'){
+	        results = '<b>'+agentAmount/liquidAmount+' '+unityLabel+'/ml</b><br>';
+	        results += agentAmount*1000/liquidAmount+' mg/ml<br>';
+	        results += agentAmount*1000000/liquidAmount+' µg/ml';
+	        $('#doseResultsCorrespondValue').html(results);
+	    }else if(unityValue === '1000'){
+	        results = agentAmount/1000/liquidAmount+' g/ml<br>';
+	        results += '<b>'+agentAmount/liquidAmount+' '+unityLabel+'/ml</b><br>';
+	        results += agentAmount*1000/liquidAmount+' µg/ml';
+	        $('#doseResultsCorrespondValue').html(results);
+	    }else if(unityValue === '1000000') {
+	        results = agentAmount/1000000/liquidAmount+' g/ml<br>';
+	        results += agentAmount/1000/liquidAmount+' mg/ml<br>';
+	        results += '<b>'+agentAmount/liquidAmount+' '+unityLabel+'/ml</b>';
+	        $('#doseResultsCorrespondValue').html(results);
+	    }
+	    if(unityValue === '1'){
+	        correspond = agentAmount*1000/liquidAmount;
+	        results = patientWeight*unityPerKg+' mg<br>';
+	        results += patientWeight*unityPerKg/correspond+' ml bei aktueller Dosis';
+	        $('#doseResultsDoseValue').html(results);
+	    }else if(unityValue === '1000'){
+	        correspond = agentAmount/liquidAmount;
+	        results = patientWeight*unityPerKg+' mg<br>';
+	        results += patientWeight*unityPerKg/correspond+' ml bei aktueller Dosis';
+	        $('#doseResultsDoseValue').html(results);
+	    }else if(unityValue === '1000000') {
+	        correspond = agentAmount/1000/liquidAmount;
+	        results = patientWeight*unityPerKg+' mg<br>';
+	        results += patientWeight*unityPerKg/correspond+' ml bei aktueller Dosis';
+	        $('#doseResultsDoseValue').html(results);
+	    }
+	});
+});
 $(document).on("pageshow", function(event) {
 	$("#saveSettings").click(function(){
 		var settings = {};
@@ -215,6 +316,25 @@ $(document).on("pageshow", function(event) {
 		}
 	});
 });
+$(document).on("pagebeforeshow", "#function-02-settings-sort", function (event) {
+	$("#settings-medisort").sortable({
+		'containment': 'parent',
+		'opacity': 0.6,
+		update: function (event, ui) {
+			$("#settings-medisort").listview("refresh");
+			orderToSave = $("#settings-medisort").sortable("toArray", {
+				attribute: "name"
+			});
+			console.log(orderToSave);
+			localStorage.setItem("sortMedical", orderToSave);
+		}
+	});
+	restoreOrder("#settings-medisort", "sortMedical", "listview", false);
+});
+$(document).on("pagebeforeshow", ".sortDrugList", function (event) {
+	$(".listToSort").sortable();
+	restoreOrder(".listToSort", "sortMedical", "collapsibleset", true);
+});
 $(document).on("click", ".show-page-loading-msg", function() {
 	var $this = $( this ),
 		theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
@@ -232,12 +352,4 @@ $(document).on("click", ".show-page-loading-msg", function() {
 })
 .on("click", ".hide-page-loading-msg", function() {
     $.mobile.loading("hide");
-});
-
-
-
-
-
-$(document).on("pageshow", "#function-03-dose", function() {
-	var agentAmount = $('#agent-amount').
 });

@@ -2,15 +2,15 @@
 	<ul data-role="listview">
 		<li data-icon="back"><a data-rel="close">Schliessen</a></li>
 		<li data-role="list-divider">Hauptfunktionen</li>
-		<li><a href="#drugs-01-disclaimer" class="drugsDisclaimer"><img src="core/icons/medicine_sw_by_e-young.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none desaturate"/>Medikamente</a></li>
-		<li><a href="#hospitals-01-index"><img src="core/icons/1391013150_Hospital_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none desaturate"/>Krankenhäuser</a></li>
-		<li><a href="#rescuecoordinationcenter-01-index"><img src="core/icons/1391013537_voice-support_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none desaturate"/>Leitstellen</a></li>
-		<li><a href="#location-01-index"><img src="core/icons/1391013724_map_16x16_sw.png" alt="Medikamenten Icon" class="ui-li-icon ui-corner-none desaturate"/>Standort</a></li>
+		<li><a href="#drugs-01-disclaimer" class="drugsDisclaimer"><img src="core/icons/1392836083_1_17.png" class="ui-li-icon ui-corner-none desaturate"/>Medikamente</a></li>
+		<li><a href="#hospitals-01-index"><img src="core/icons/1392838565_Hospital.png" class="ui-li-icon ui-corner-none desaturate"/>Krankenhäuser</a></li>
+		<li><a href="#rescuecoordinationcenter-01-index"><img src="core/icons/1392835144_voice-support.png" class="ui-li-icon ui-corner-none desaturate"/>Leitstellen</a></li>
+		<li><a href="#location-01-index" data-ajax="false"><img src="core/icons/1392835739_map-icon.png" class="ui-li-icon ui-corner-none desaturate"/>Standort</a></li>
 		<li data-role="list-divider">Schnellwahl</li>
 		<li data-icon="phone"><a class="getRescueCoordinationCenterNumber">Leitstelle</a></li>
 		<li data-icon="phone"><a class="getPoisonNumber">Giftnotruf</a></li>
 		<li data-role="list-divider">Funktionen</li>
-		<li><a href="#function-03-dose"><img src="core/icons/1392922996_calculator.png" class="ui-li-icon ui-corner-none desaturate"/>Dosierungsrechner</a></li>
+		<li data-icon="action"><a href="#function-03-dose" data-rel="dialog">Dosierer</a></li>
 		<li>Verbrauchtes</li>
 		<li data-role="list-divider">Informatives</li>
 		<li><a href="#spellingalphabet-01-index">Buchstabiertafel</a></li>

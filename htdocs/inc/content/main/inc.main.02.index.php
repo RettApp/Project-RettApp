@@ -20,7 +20,7 @@
 		</ul>
 		<ul data-role="listview" data-inset="true">
 			<li data-role="list-divider">Schnellauswahl</li>
-			<li><a href="#function-03-dose"><img src="core/icons/1392922996_calculator.png" class="ui-li-icon ui-corner-none desaturate"/>Dosierungsrechner</a></li>
+			<li data-icon="action"><a href="#function-03-dose" data-rel="dialog">Dosierer</a></li>
 			<li data-icon="phone"><a class="getRescueCoordinationCenterNumber">Leitstelle</a></li>
 			<li data-icon="phone"><a class="getPoisonNumber">Giftnotruf</a></li>
 		</ul>

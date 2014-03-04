@@ -57,7 +57,7 @@
 	<div data-role="footer" data-position="fixed">
 		<div data-role="navbar">
 			<ul>
-				<li><a href="tel:+49-6341-112" data-icon="phone">Anrufen</a></li>
+				<li><a href="tel:+49-6341-19222" data-icon="phone">Anrufen</a></li>
 			</ul>
 		</div>
 	</div>

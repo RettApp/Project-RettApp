@@ -26,7 +26,7 @@
 	foreach (glob("inc/content/drugs/inc.drugs.*.php") as $filename){
 		include $filename;
 	}
-	foreach (glob("inc/content/drugs/regional/inc.drugs.reginal.*.php") as $filename){
+	foreach (glob("inc/content/drugs/drug/inc.drugs.drug.*.php") as $filename){
 		include $filename;
 	}
 	foreach (glob("inc/content/hospitals/inc.hospitals.*.php") as $filename){
