@@ -1,4 +1,4 @@
-<div data-role="page" id="drugs-02-index" data-quicklinks="true">
+<div data-role="page" id="drugs-02-index">
 	<div data-role="header" data-position="fixed">
 		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
 			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>

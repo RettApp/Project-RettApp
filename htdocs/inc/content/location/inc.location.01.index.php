@@ -1,4 +1,4 @@
-<div data-role="page" id="location-01-index" data-quicklinks="true">
+<div data-role="page" id="location-01-index">
 	<div data-role="header" data-position="fixed">
 		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
 			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
@@ -18,7 +18,7 @@
 		</div>
 		<p id="location-01-map_canvas_stoplocation">
 			<input type="checkbox" name="checkbox-1a" id="stoplocation" checked="">
-			<label for="stoplocation">Verfolgung</label>
+			<label for="stoplocation">Karte zentrieren</label>
 		</p>
 	</div>
 </div>

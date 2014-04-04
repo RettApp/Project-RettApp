@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<leitstellen>
+	<state id="rls-bw" wappen="" name="Baden-Württemberg" acronym="BW">
+		<leitstelle id="rls-bw-bc">
+			<rufname>Leiststelle Biberach</rufname>
+			<standort></standort>
+			<digital></digital>
+			<channels></channels>
+			<regions>
+				<region>
+					<county></county>
+					<short></short>
+					<channel></channel>
+				</region>
+			</regions>
+			<phone></phone>
+		</leitstelle>
+		<leitstelle id="rls-bw-fn">
+			<rufname>Bodensee</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-bb">
+			<rufname>Böblingen</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-cw">
+			<rufname>Calw</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-em">
+			<rufname>Emmendingen</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-es">
+			<rufname>Esslingen</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-fr">
+			<rufname>Freiburg</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-fds">
+			<rufname>Freudenstadt</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-gp">
+			<rufname>Göppingen</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-hn">
+			<rufname>Heilbronn</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-kuen">
+			<rufname>Hohenlohe</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-ka">
+			<rufname>Karlsruhe</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-kn">
+			<rufname>Konstanz</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-lb">
+			<rufname>Ludwigsburg</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-loe">
+			<rufname>Lörrach</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-tbb">
+			<rufname>Main-Tauber</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-ra">
+			<rufname>Mittelbaden</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-mos">
+			<rufname>Mosbach</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-og">
+			<rufname>Ortenau</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-aa">
+			<rufname>Ostalb</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-pf">
+			<rufname>Pforzheim</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-rv">
+			<rufname>Oberschwaben</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-wn">
+			<rufname>Rems-Murr</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-rt">
+			<rufname>Reutlingen</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-hd">
+			<rufname>Rhein-Neckar</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-rw">
+			<rufname>Rottweil</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-sha">
+			<rufname>Schwäbisch Hall</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-s">
+			<rufname>Stuttgart</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-tue">
+			<rufname>Tübingen</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-tut">
+			<rufname>Tuttlingen</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-ul">
+			<rufname>Ulm</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-vs">
+			<rufname>Villingen</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-wt">
+			<rufname>Waldshut</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bw-bl">
+			<rufname>Zollernalb</rufname>
+		</leitstelle>
+	</state>
+	<state id="rls-by" wappen="" name="Bayern" acronym="BY">
+		<leitstelle id="rls-by-">
+			<rufname>Allgäu</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Amberg</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Ansbach</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Augsburg</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Bamberg</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Bayreuth</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Coburg</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Donau-Iller</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Erding</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Fürstenfeldbruck</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Hochfranken</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Ingolstadt</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Landshut</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Mittelfranken-Süd</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>München</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Nordoberpfalz</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Nürnberg</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Oberland</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Passau</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Regensburg</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Rosenheim</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Schweinfurt</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Straubing</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Traunstein</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Untermain</rufname>
+		</leitstelle>
+		<leitstelle id="rls-by-">
+			<rufname>Würzburg</rufname>
+		</leitstelle>
+	</state>
+	<state id="rls-be" wappen="" name="Berlin" acronym="BE">
+		<leitstelle id="rls-be-">
+			<rufname>Berlin</rufname>
+		</leitstelle>
+	</state>
+	<state id="rls-bb" wappen="" name="Brandenburg" acronym="BB">
+		<leitstelle id="rls-bb-">
+			<rufname>Brandenburg</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bb-">
+			<rufname>Lausitz</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bb-">
+			<rufname>Oderland</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bb-">
+			<rufname>NordOst</rufname>
+		</leitstelle>
+		<leitstelle id="rls-bb-">
+			<rufname>Nordwest</rufname>
+		</leitstelle>
+	</state>
+	<state id="rls-hb" wappen="" name="Bremen" acronym="HB">
+		<leitstelle id="rls-hb-">
+			<rufname>Bremen</rufname>
+		</leitstelle>
+		<leitstelle id="rls-hb-">
+			<rufname>Bremerhaven</rufname>
+		</leitstelle>
+	</state>
+	<state id="rls-hh" wappen="" name="Hamburg" acronym="HH">
+		<leitstelle id="rls-hh-">
+			<rufname>Hamburg</rufname>
+		</leitstelle>
+	</state>
+	<state id="rls-he" wappen="" name="Hessen" acronym="HE">
+		<leitstelle id="rls-he-">
+			<rufname>Bergstraße</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Darmstadt</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Darmstadt-Dieburg</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Gerau</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Odenwald</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Frankfurt</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Hochtaunus</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Main-Taunus</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Wetterau</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Fulda</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Hersfeld-Rotenburg</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Vogelsberg</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Gießen</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Lahn-Dill</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Marburg-Biedenkopf</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Kassel</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Schwalm-Eder</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Waldeck-Frankenberg</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Werra-Meißner</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Offenbach</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Dietzenbach</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Main-Kinzig</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Wiesbaden</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Limburg-Weilburg</rufname>
+		</leitstelle>
+		<leitstelle id="rls-he-">
+			<rufname>Rheingau-Taunus</rufname>
+		</leitstelle>
+	</state>
+	<state id="rls-mv" wappen="" name="Mecklenburg-Vorpommern" acronym="MV"></state>
+	<state id="rls-ni" wappen="" name="Niedersachsen" acronym="NI"></state>
+	<state id="rls-nw" wappen="" name="Nordrhein-Westfalen" acronym="NW"></state>
+	<state id="rls-rp" wappen="" name="Rheinland-Pfalz" acronym="RP">
+		<leitstelle id="rls-rp-">
+			<rufname>Kreuznach</rufname>
+		</leitstelle>
+		<leitstelle id="rls-rp-">
+			<rufname>Kaiser</rufname>
+		</leitstelle>
+		<leitstelle id="rls-rp-">
+			<rufname>Koblenz</rufname>
+		</leitstelle>
+		<leitstelle id="rls-rp-">
+			<rufname>Lu</rufname>
+		</leitstelle>
+		<leitstelle id="rls-rp-mz">
+			<rufname>Leiststelle Mainz</rufname>
+			<standort>Mainz</standort>
+			<digital>Analog</digital>
+			<channels>404 / 411</channels>
+			<regions>
+				<region>
+					<county>Mainz</county>
+					<short>MZ</short>
+					<channel>404 GU</channel>
+				</region>
+				<region>
+					<county>Mainz-Bingen</county>
+					<short>MZ</short>
+					<channel>404 GU</channel>
+				</region>
+				<region>
+					<county>Worms</county>
+					<short>WO</short>
+					<channel>411 GU</channel>
+				</region>
+				<region>
+					<county>Alzey-Worms</county>
+					<short>AZ</short>
+					<channel>411 GU</channel>
+				</region>
+			</regions>
+			<phone>+49-6131-19222</phone>
+		</leitstelle>
+		<leitstelle id="rls-rp-">
+			<rufname>Montabaur</rufname>
+		</leitstelle>
+		<leitstelle id="rls-rp-">
+			<rufname>Südpfalz</rufname>
+		</leitstelle>
+		<leitstelle id="rls-rp-">
+			<rufname>Trier</rufname>
+		</leitstelle>
+	</state>
+	<state id="rls-sl" wappen="" name="Saarland" acronym="SL">
+		<leitstelle id="rls-sl-">
+			<rufname>Winterberg</rufname>
+		</leitstelle>
+	</state>
+	<state id="rls-sn" wappen="" name="Sachsen" acronym="SN">
+		<leitstelle id="rls-sn-">
+			<rufname>Leipzig</rufname>
+		</leitstelle>
+		<leitstelle id="rls-sn-">
+			<rufname>Chemnitz</rufname>
+		</leitstelle>
+		<leitstelle id="rls-sn-">
+			<rufname>Zwickau</rufname>
+		</leitstelle>
+		<leitstelle id="rls-sn-">
+			<rufname>Dresden</rufname>
+		</leitstelle>
+		<leitstelle id="rls-sn-">
+			<rufname>Hoyerswerda</rufname>
+		</leitstelle>
+	</state>
+	<state id="rls-st" wappen="" name="Sachsen-Anhalt" acronym="ST"></state>
+	<state id="rls-sh" wappen="" name="Schleswig-Holstein" acronym="SH"></state>
+	<state id="rls-th" wappen="" name="Thüringen" acronym="TH"></state>
+</leitstellen>

@@ -1,4 +1,4 @@
-<div data-role="page" id="main-02-index" data-quicklinks="true">
+<div data-role="page" id="main-02-index">
 	<div data-role="header" data-position="fixed">
 		<a href="#function-99-navigationpanel" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-bars">Menü</a>
 		<span class="ui-title"></span>
@@ -10,6 +10,16 @@
 	<div data-role="content" role="main" class="ui-content">
 		<div class="rettapp-banner">
 			<img src="core/img/rettapp_973x235_banner.png" alt="Logo" />
+			<?php
+				switch($_GET['head']){
+					case 'cordova':
+						echo('');
+						break;
+					default:
+						echo('<p>Entwickler-Version 0.0.3</p>');
+						break;
+				}
+			?>
 		</div>
 		<ul data-role="listview" data-inset="true">
 			<li data-role="list-divider">Hauptfunktionen</li>

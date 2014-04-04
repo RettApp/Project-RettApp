@@ -1,4 +1,4 @@
-<div data-role="page" id="function-02-settings" data-quicklinks="true">
+<div data-role="page" id="function-02-settings">
 	<div data-role="header" data-position="fixed">
 		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
 			<a href="#function-99-navigationpanel" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext">Menü</a>
@@ -13,22 +13,22 @@
 	<div data-role="content" role="main" class="ui-content">
 		<form>
 			<div class="ui-field-contain">
-				<label for="settings-startdisclaimer">Startdisclaimer:</label>
+				<label for="settings-startdisclaimer">Rechtliches bei Start:</label>
 				<select name="flip-1" id="settings-startdisclaimer" data-role="slider">
 					<option value="1">Off</option>
 					<option value="0">On</option>
 				</select>
 			</div>
 			<div class="ui-field-contain">
-				<label for="settings-meddisclaimer">Medikamentendisclaimer:</label>
-				<select name="flip-1" id="settings-meddisclaimer" data-role="slider">
+				<label for="settings-startup">Bedienunghinweis:</label>
+				<select name="flip-1" id="settings-startup" data-role="slider">
 					<option value="1">Off</option>
 					<option value="0">On</option>
 				</select>
 			</div>
 			<div class="ui-field-contain">
-				<label for="settings-position">Position:</label>
-				<select name="flip-1" id="settings-position" data-role="slider">
+				<label for="settings-meddisclaimer">Rechtliches bei Medikamenten:</label>
+				<select name="flip-1" id="settings-meddisclaimer" data-role="slider">
 					<option value="1">Off</option>
 					<option value="0">On</option>
 				</select>
@@ -202,7 +202,7 @@
 						<option value="+49-631-19222">Kaiser</option>
 						<option value="+49-261-19222">Koblenz</option>
 						<option value="+49-6237-19222">Lu</option>
-						<option value="+49-6133-19222">Mainz</option>
+						<option value="+49-6131-19222">Mainz</option>
 						<option value="+49-2602-19222">Montabaur</option>
 						<option value="+49-6341-19222">Südpfalz</option>
 						<option value="+49-651-19222">Trier</option>
@@ -245,7 +245,7 @@
 			<li name="mediSortItem4">04. Interaktion &frasl; Wechselwirkungen</li>
 			<li name="mediSortItem5">05. Wirkungseintritt</li>
 			<li name="mediSortItem6">06. Wirkungsdauer</li>
-			<li name="mediSortItem7">07. Zusammensetzung</li>
+			<li name="mediSortItem7">07. Darreichungsformen</li>
 			<li name="mediSortItem8">08. Indikation</li>
 			<li name="mediSortItem9">09. Kontraindikation</li>
 			<li name="mediSortItem10">10. Dosierungsempfehlung</li>

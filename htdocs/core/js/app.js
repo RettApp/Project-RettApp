@@ -47,7 +47,6 @@ function myAppLogic(){
 			url: 'http://www.rettapp.org/version.php',
 			timeout: 2000,
 			error: function(){
-				/* console.log('DEBUG: Error bei Ajax-Request'); */
 				$('.showVersion').html('<a href="#" class="ui-btn ui-corner-all ui-btn-icon-right ui-icon-alert ui-shadow ui-state-disabled">Versionsabfrage nicht möglich!</a>');
 			},
 			success: function (data, textStatus) {

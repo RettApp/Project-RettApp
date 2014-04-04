@@ -1,11 +1,12 @@
 var currentFeature_or_Features = null;
 var watchID = null;
 var map, GeoMarker, activePage, geolocpoint, results, correspond, unityLabel, unityValue, agentAmount, liquidAmount, unityPerKg, patientWeight;
+var database = $.ajax({type: "GET", url: "xml/database.xml", dataType: "xml", async: false}).responseXML;
 if (localStorage.getItem("settings") === null) {
 	var settings = {};
 	settings.startdisclaimer = '0';
 	settings.meddisclaimer = '0';
-	settings.position = '0';
+	settings.startup = '0';
 	settings.zoomrange = '10';
 	settings.poison = '112';
 	settings.vibration = '0';
@@ -177,13 +178,19 @@ function restoreOrder (listToOrder, listOrder, kindOfList, disableSort){
 	    list.sortable("disable");
     }
 };
-$(document).on("pageshow", "#location-01-index", function() {
+$(document).on("pagebeforecreate", "#main-01-disclaimer", function(event, ui) {
 	var settings = JSON.parse(localStorage.getItem('settings'));
-	if(settings.position == '0'){
-		initPositionMap();
-	}else{
-		$('#location-01-index-map_canvas').html('<p>Die Funktion ist deaktiviert.</p>');
-	}
+	if(settings.startdisclaimer == "1") {
+		if(settings.startup == "1") {
+			$.mobile.changePage("#main-02-index");
+		} else {
+			$.mobile.changePage("#main-03-startup");
+		};
+	};
+	panelAndListRefresh();
+});
+$(document).on("pageshow", "#location-01-index", function() {
+	initPositionMap();
 });
 $(document).on("pagebeforeshow", "#function-02-settings", function(event) {
 	panelAndListRefresh();
@@ -199,21 +206,29 @@ $(document).on("pagebeforeshow", "#function-02-settings", function(event) {
 		changeSelectMenuVisibleOnSettings("#settings-zoomrange", "enable");
 	}
 	changeSliderOnSettings('#settings-startdisclaimer', settings.startdisclaimer);
+	changeSliderOnSettings('#settings-startup', settings.startup);
 	changeSliderOnSettings('#settings-meddisclaimer', settings.meddisclaimer);
 	changeSliderOnSettings('#settings-position', settings.position);
 	changeSelectMenuOnSettings('#settings-zoomrange', settings.zoomrange);
 	changeSelectMenuOnSettings('#settings-poison', settings.poison);
 	changeSelectMenuOnSettings('#settings-rescuecoordinationcenter', settings.rescuecoordinationcenter);
 });
-$(document).on("pagebeforeshow", "#main-01-disclaimer", function(event) {
+$(document).on("pagebeforeshow", "#main-03-startup", function(event) {
 	var settings = JSON.parse(localStorage.getItem('settings'));
-	if(settings.startdisclaimer == "1") {
+	if(settings.startup == "1") {
 		$.mobile.changePage("#main-02-index");
 	};
 	panelAndListRefresh();
 });
 $(document).on("pagebeforeshow", "#main-02-index", function(event) {
 	panelAndListRefresh();
+});
+$(document).on("pageshow", "#main-03-startup", function(event) {
+	$("#slides").slidesjs({
+		width: 700,
+		height: 700,
+		navigation: false
+	});
 });
 $(document).on("pagebeforeshow", function(event){
 	var settings = JSON.parse(localStorage.getItem('settings'));
@@ -228,8 +243,19 @@ $(document).on("pagebeforeshow", function(event){
 			$(this).attr('href', '#drugs-01-disclaimer');
 		})
 	}
+	if(settings.startup == "1") {
+		var obj = $('a.startuplink');
+		$.each(obj, function(){
+			$(this).attr('href', '#main-02-index');
+		})
+	}else{
+		var obj = $('a.startuplink');
+		$.each(obj, function(){
+			$(this).attr('href', '#main-03-startup');
+		})
+	}
 });
-$(document).on("pagebeforeshow", function(event) {
+$(document).on("pagebeforeshow", function(event){
 	activePage = $.mobile.activePage.attr("id");
 	$('a.ui-btn-active').removeClass("ui-btn-active");
 	$('[href="#'+activePage+'"]').addClass("ui-btn-active");
@@ -303,7 +329,7 @@ $(document).on("pageshow", function(event) {
 		var settings = {};
 		settings.startdisclaimer = $('#settings-startdisclaimer').val();
 		settings.meddisclaimer = $('#settings-meddisclaimer').val();
-		settings.position = $('#settings-position').val();
+		settings.startup = $('#settings-startup').val();
 		settings.zoomrange = $('#settings-zoomrange').val();
 		settings.poison = $('#settings-poison').val();
 		settings.rescuecoordinationcenter = $('#settings-rescuecoordinationcenter').val();
@@ -334,7 +360,17 @@ $(document).on("pagebeforeshow", "#function-02-settings-sort", function (event) 
 $(document).on("pagebeforeshow", ".sortDrugList", function (event) {
 	$(".listToSort").sortable();
 	restoreOrder(".listToSort", "sortMedical", "collapsibleset", true);
+	$(".listToSort").sortable("disable");
 });
+/*$(document).on("pagebeforeshow", "#rescuecoordinationcenter-01-index", function(event){
+	$(database).find('leitstellen > region').each(function(){
+		var id = $(this).attr('id');
+		var name = $(this).attr('name');
+		var acronym = $(this).attr('acronym');
+		$('<li><a href="#'+id+'">'+name+' ('+acronym+')</a></li>').appendTo($('#listRLSRegion'));
+	});
+	$('#listRLSRegion').listview('refresh');
+});*/
 $(document).on("click", ".show-page-loading-msg", function() {
 	var $this = $( this ),
 		theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,

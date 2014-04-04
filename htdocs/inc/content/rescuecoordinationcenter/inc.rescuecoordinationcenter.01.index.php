@@ -29,5 +29,7 @@
 			<li>Schleswig-Holstein (SH)</li>
 			<li>Thüringen (TH)</li>
 		</ul>
+		<!--<ul data-role="listview" data-filter="true" data-filter-placeholder="Suche..." data-inset="false" id="listRLSRegion">
+		</ul>-->
 	</div>
 </div>
